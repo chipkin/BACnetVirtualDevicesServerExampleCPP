@@ -239,6 +239,8 @@
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetFaultType.cpp" />
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetFileAccessMethod.cpp" />
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetFirstFailedSubscription.cpp" />
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetHostAddress.cpp" />
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetHostNPort.cpp" />
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetIAmProcessor.cpp" />
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetIAmRequest.cpp" />
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetIAmRouterToNetwork.cpp" />
@@ -281,6 +283,7 @@
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetMaintenance.cpp" />
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetMSTPPacket.cpp" />
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetNetworkLayerProtocolMessage.cpp" />
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetNetworkNumberIs.cpp" />
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetNetworkNumberQuality.cpp" />
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetNetworkParameters.cpp" />
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetNetworkPortCommand.cpp" />
@@ -335,6 +338,7 @@
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetReadResult.cpp" />
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetRecipient.cpp" />
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetRecipientProcess.cpp" />
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetReinitializeDeviceProcessor.cpp" />
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetReinitializeDeviceRequest.cpp" />
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetReinitializedStateOfDevice.cpp" />
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetRejectMessageToNetwork.cpp" />
@@ -345,6 +349,7 @@
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetReliability.cpp" />
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetRestartReason.cpp" />
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetRouter.cpp" />
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetRouterAvailableToNetwork.cpp" />
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetRouterBusyToNetwork.cpp" />
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetRoutingTableEntry.cpp" />
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetSecurityLevel.cpp" />
@@ -363,6 +368,8 @@
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetStackInvokeIds.cpp" />
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetStackMessageGenerator.cpp" />
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetStackNetworkKey.cpp" />
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetStackNetworkPortBase.cpp" />
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetStackNetworkPortIpv4.cpp" />
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetStackObjectSettings.cpp" />
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetStackReadPropertyAsync.cpp" />
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetStackSentConfirmedRequests.cpp" />
@@ -394,6 +401,7 @@
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetUTCTimeSynchronizationRequest.cpp" />
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetVTClass.cpp" />
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetVTCloseError.cpp" />
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetWhatIsNetworkNumber.cpp" />
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetWhoHasProcessor.cpp" />
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetWhoHasRequest.cpp" />
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetWhoIsProcessor.cpp" />
@@ -500,6 +508,8 @@
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetFileAccessMethod.h" />
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetFirstFailedSubscription.h" />
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetForeignDeviceTableEntry.h" />
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetHostAddress.h" />
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetHostNPort.h" />
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetIAmProcessor.h" />
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetIAmRequest.h" />
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetIAmRouterToNetwork.h" />
@@ -543,6 +553,7 @@
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetMaintenance.h" />
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetMSTPPacket.h" />
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetNetworkLayerProtocolMessage.h" />
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetNetworkNumberIs.h" />
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetNetworkNumberQuality.h" />
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetNetworkParameters.h" />
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetNetworkPortCommand.h" />
@@ -597,6 +608,7 @@
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetReadResult.h" />
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetRecipient.h" />
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetRecipientProcess.h" />
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetReinitializeDeviceProcessor.h" />
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetReinitializeDeviceRequest.h" />
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetReinitializedStateOfDevice.h" />
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetRejectMessageToNetwork.h" />
@@ -608,6 +620,7 @@
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetRestartReason.h" />
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetResultFlags.h" />
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetRouter.h" />
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetRouterAvailableToNetwork.h" />
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetRouterBusyToNetwork.h" />
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetRoutingTableEntry.h" />
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetSecurityLevel.h" />
@@ -630,6 +643,8 @@
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetStackListItems.h" />
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetStackMessageGenerator.h" />
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetStackNetworkKey.h" />
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetStackNetworkPortBase.h" />
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetStackNetworkPortIpv4.h" />
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetStackObjectSettings.h" />
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetStackReadPropertyAsync.h" />
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetStackSentConfirmedRequests.h" />
@@ -662,6 +677,7 @@
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetUTCTimeSynchronizationRequest.h" />
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetVTClass.h" />
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetVTCloseError.h" />
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetWhatIsNetworkNumber.h" />
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetWhoHasProcessor.h" />
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetWhoHasRequest.h" />
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetWhoIsProcessor.h" />

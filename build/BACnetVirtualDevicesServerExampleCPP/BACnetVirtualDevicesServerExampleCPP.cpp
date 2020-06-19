@@ -45,7 +45,7 @@ ExampleDatabase g_database; // The example database that stores current values.
 
 // Constants
 // =======================================
-const std::string APPLICATION_VERSION = "0.0.1";  // See CHANGELOG.md for a full list of changes.
+const std::string APPLICATION_VERSION = "0.0.2";  // See CHANGELOG.md for a full list of changes.
 const uint32_t MAX_XML_RENDER_BUFFER_LENGTH = 1024 * 20;
 
 // Callback Functions to Register to the DLL
@@ -159,6 +159,12 @@ int main()
 	std::cout << "Adding Virtual Devices and Objects..." << std::endl;
 	std::map<uint16_t, std::vector<ExampleDatabaseDevice> >::iterator it;
 	for (it = g_database.virtualDevices.begin(); it != g_database.virtualDevices.end(); ++it) {
+		// Add the Virtual network
+		if (!fpAddVirtualNetwork(g_database.mainDevice.instance, it->first, it->first * 10)) {
+			std::cerr << "Failed to add virtual network " << it->first << std::endl;
+			return -1;
+		}
+
 		std::vector<ExampleDatabaseDevice>::iterator devIt;
 		for (devIt = it->second.begin(); devIt != it->second.end(); ++devIt) {
 			// Add the Virtual Device
@@ -546,6 +552,7 @@ bool GetObjectName(const uint32_t deviceInstance, const uint16_t objectType, con
 {
 	size_t stringSize = 0;
 	if (objectType == CASBACnetStackExampleConstants::OBJECT_TYPE_DEVICE && objectInstance == g_database.mainDevice.instance) {
+		// Get the name of the main device
 		stringSize = g_database.mainDevice.objectName.size();
 		if (stringSize > maxElementCount) {
 			std::cerr << "Error - not enough space to store full name of objectType=[" << objectType << "], objectInstance=[" << objectInstance << " ]" << std::endl;
@@ -555,7 +562,8 @@ bool GetObjectName(const uint32_t deviceInstance, const uint16_t objectType, con
 		*valueElementCount = (uint32_t)stringSize;
 		return true;
 	}
-	else if (objectType == CASBACnetStackExampleConstants::OBJECT_TYPE_NETWORK_PORT && objectInstance == g_database.networkPort.instance) {
+	else if (objectType == CASBACnetStackExampleConstants::OBJECT_TYPE_NETWORK_PORT && objectInstance == g_database.networkPort.instance && deviceInstance == g_database.mainDevice.instance) {
+		// Get the name of the main ipv4 Network Port Object
 		stringSize = g_database.networkPort.objectName.size();
 		if (stringSize > maxElementCount) {
 			std::cerr << "Error - not enough space to store full name of objectType=[" << objectType << "], objectInstance=[" << objectInstance << " ]" << std::endl;
@@ -566,6 +574,7 @@ bool GetObjectName(const uint32_t deviceInstance, const uint16_t objectType, con
 		return true;
 	}
 	else if (objectType == CASBACnetStackExampleConstants::OBJECT_TYPE_DEVICE) {
+		// Get the name of a virtual device
 		std::map<uint16_t, std::vector<ExampleDatabaseDevice> >::iterator it;
 		for (it = g_database.virtualDevices.begin(); it != g_database.virtualDevices.end(); ++it) {
 			std::vector<ExampleDatabaseDevice>::iterator devIt;
@@ -584,6 +593,7 @@ bool GetObjectName(const uint32_t deviceInstance, const uint16_t objectType, con
 		}
 	}
 	else if (objectType == CASBACnetStackExampleConstants::OBJECT_TYPE_ANALOG_INPUT) {
+		// Get the name of an analog input
 		if (g_database.analogInputs.count(deviceInstance) > 0 && g_database.analogInputs[deviceInstance].instance == objectInstance) {
 			stringSize = g_database.analogInputs[deviceInstance].objectName.size();
 			if (stringSize > maxElementCount) {
@@ -595,7 +605,24 @@ bool GetObjectName(const uint32_t deviceInstance, const uint16_t objectType, con
 			return true;
 		}
 	}
-	
+	else if (objectType == CASBACnetStackExampleConstants::OBJECT_TYPE_NETWORK_PORT) {
+		// Get the name of a virtual network port object
+		if (deviceInstance == g_database.mainDevice.instance) {
+			// Virtual network port object representing one of the virtual networks
+			std::string name = "Network Port for virtual network " + ChipkinCommon::ChipkinConvert::ToString(objectInstance / 10);
+			memcpy(value, name.c_str(), name.size());
+			*valueElementCount = name.size();
+			return true;
+		}
+		else {
+			// Virtual network port object in the virtual device
+			std::string name = "Network Port of virtual device " + ChipkinCommon::ChipkinConvert::ToString(deviceInstance);
+			memcpy(value, name.c_str(), name.size());
+			*valueElementCount = name.size();
+			return true;
+		}
+	}
+
 	return false;
 }
 

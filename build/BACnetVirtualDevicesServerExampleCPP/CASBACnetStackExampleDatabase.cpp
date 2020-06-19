@@ -60,7 +60,7 @@ void ExampleDatabase::Setup() {
 	}
 
 	this->networkPort.instance = 1;
-	this->networkPort.objectName = "NetworkPort";
+	this->networkPort.objectName = "Network Port for Ipv4";
 	this->LoadNetworkPortProperties();
 }
 

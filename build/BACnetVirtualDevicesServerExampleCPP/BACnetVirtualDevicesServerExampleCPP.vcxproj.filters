@@ -14,68 +14,83 @@
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
     <Filter Include="CASBACnetStack">
-      <UniqueIdentifier>{6b0d1c9c-d691-48ee-8be7-4c5ba10b1d08}</UniqueIdentifier>
+      <UniqueIdentifier>{af430f4d-1731-4437-8933-267e418be877}</UniqueIdentifier>
     </Filter>
     <Filter Include="CASBACnetStack\Enumerated">
-      <UniqueIdentifier>{0b00e2c9-ef67-4865-81d7-408160426a45}</UniqueIdentifier>
+      <UniqueIdentifier>{0a625a21-3453-4309-9a54-8274d2a1a145}</UniqueIdentifier>
     </Filter>
     <Filter Include="CASBACnetStack\Bitstrings">
-      <UniqueIdentifier>{eaf9abb5-c00a-4b8c-b4f2-116fc2952d35}</UniqueIdentifier>
+      <UniqueIdentifier>{ed1d5314-70e3-4868-83cf-eb65f6125956}</UniqueIdentifier>
     </Filter>
     <Filter Include="CASBACnetStack\APDU">
-      <UniqueIdentifier>{fed6ba0a-f479-4849-8e9f-4f9979ca947d}</UniqueIdentifier>
+      <UniqueIdentifier>{b5af262c-399e-4638-921b-91da29c2b583}</UniqueIdentifier>
     </Filter>
     <Filter Include="CASBACnetStack\APDU\Primitives">
-      <UniqueIdentifier>{f05845ab-4bb8-4a38-96ef-5579e1e149b6}</UniqueIdentifier>
+      <UniqueIdentifier>{566ad52a-7fcf-40a3-9147-32a7f848af15}</UniqueIdentifier>
     </Filter>
     <Filter Include="CASBACnetStack\APDU\Error Productions">
-      <UniqueIdentifier>{74ed97b6-814f-4c30-94aa-330dadd4762e}</UniqueIdentifier>
+      <UniqueIdentifier>{32f12ab1-3eab-4a36-b1a2-d931c72379c4}</UniqueIdentifier>
     </Filter>
     <Filter Include="CASBACnetStack\APDU\Base Types">
-      <UniqueIdentifier>{40381dbd-e8fb-41c8-9e40-3230be5c1882}</UniqueIdentifier>
+      <UniqueIdentifier>{9cf5963a-900d-4b10-9abd-d760a9ebfd21}</UniqueIdentifier>
     </Filter>
     <Filter Include="CASBACnetStack\APDU\Unconfirmed Service Productions">
-      <UniqueIdentifier>{e7360f25-933c-4cda-b9f4-9ad75a8ff0d0}</UniqueIdentifier>
+      <UniqueIdentifier>{4e14947f-0839-4653-a834-98e5b67d5ce8}</UniqueIdentifier>
     </Filter>
     <Filter Include="CASBACnetStack\APDU\Confirmed Service Productions">
-      <UniqueIdentifier>{aacc3cfd-5933-4c60-849f-dfea86f9b7d3}</UniqueIdentifier>
+      <UniqueIdentifier>{17192e0f-e7f2-4039-bfee-873fcb51e151}</UniqueIdentifier>
     </Filter>
     <Filter Include="CASBACnetStack\APDU\Custom Types">
-      <UniqueIdentifier>{33196a33-395d-469e-8d65-f05c362bde0f}</UniqueIdentifier>
+      <UniqueIdentifier>{a26bb373-38f6-4fc0-a9e6-1b5a23604d24}</UniqueIdentifier>
     </Filter>
     <Filter Include="CASBACnetStack\PDU">
-      <UniqueIdentifier>{d3855771-5971-4314-ba92-b259a2da5fe0}</UniqueIdentifier>
+      <UniqueIdentifier>{7a88456b-647d-43e2-8928-ff4c493f8957}</UniqueIdentifier>
     </Filter>
     <Filter Include="CASBACnetStack\Interfaces">
-      <UniqueIdentifier>{de36cbfe-adaf-413d-a8a8-a995b717d8a7}</UniqueIdentifier>
+      <UniqueIdentifier>{9a8f90f6-ab15-4da5-a48d-396dca477e12}</UniqueIdentifier>
     </Filter>
     <Filter Include="CASBACnetStack\NPDU">
-      <UniqueIdentifier>{72174388-8d6a-467d-9d49-3137f23584ad}</UniqueIdentifier>
+      <UniqueIdentifier>{4d395a93-2e90-4403-82ae-1cf20ff8638b}</UniqueIdentifier>
     </Filter>
     <Filter Include="CASBACnetStack\BVLL">
-      <UniqueIdentifier>{184ab215-f542-49b3-aed1-dbc89dcc549b}</UniqueIdentifier>
+      <UniqueIdentifier>{3897807e-a8e1-49b4-b3c3-609fa8e0549f}</UniqueIdentifier>
     </Filter>
     <Filter Include="CASBACnetStack\Packet">
-      <UniqueIdentifier>{3353967f-9076-4d0c-b511-de418c6ca959}</UniqueIdentifier>
+      <UniqueIdentifier>{aa736793-c6aa-4435-b281-ae464667d7d2}</UniqueIdentifier>
     </Filter>
     <Filter Include="CASBACnetStack\Renderer">
-      <UniqueIdentifier>{2721289c-f7a4-4cec-9e76-90d1482b1d4b}</UniqueIdentifier>
+      <UniqueIdentifier>{00720baf-b88a-4ff8-abbb-082325dffc2e}</UniqueIdentifier>
     </Filter>
     <Filter Include="CASBACnetStack\Database">
-      <UniqueIdentifier>{d639aaf7-790b-458f-a063-bac23c18fbb9}</UniqueIdentifier>
+      <UniqueIdentifier>{6f5ab47f-ea27-4e7d-b42f-7301fcdc4844}</UniqueIdentifier>
     </Filter>
     <Filter Include="CASBACnetStack\Processors">
-      <UniqueIdentifier>{3feeac20-976e-4cfc-823c-52553307ec37}</UniqueIdentifier>
+      <UniqueIdentifier>{a96027f9-e01c-4195-87c5-a200eafab9bf}</UniqueIdentifier>
     </Filter>
     <Filter Include="CASBACnetStack\MessageGenerators">
-      <UniqueIdentifier>{0896f4a0-5f45-4e8e-b8e8-c007971c8678}</UniqueIdentifier>
+      <UniqueIdentifier>{a454351d-94bc-4299-ad0f-122fefa707ea}</UniqueIdentifier>
     </Filter>
     <Filter Include="CASBACnetStack\Helper">
-      <UniqueIdentifier>{a4afd274-2b97-4abd-9542-996eb8ce0422}</UniqueIdentifier>
+      <UniqueIdentifier>{970771d8-edb1-4e9e-a05b-f34d8ae5b1d4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BACnetVirtualDevicesServerExampleCPP.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CASBACnetStackExampleDatabase.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SimpleUDP.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\submodules\cas-common\source\ChipkinEndianness.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\submodules\cas-common\source\ChipkinUtilities.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\submodules\cas-common\source\ChipkinConvert.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetStackCommon.cpp">
@@ -435,6 +450,12 @@
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetDeviceObjectReference.cpp">
       <Filter>CASBACnetStack\APDU\Base Types</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetHostAddress.cpp">
+      <Filter>CASBACnetStack\APDU\Base Types</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetHostNPort.cpp">
+      <Filter>CASBACnetStack\APDU\Base Types</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetLandingCall.cpp">
       <Filter>CASBACnetStack\APDU\Base Types</Filter>
     </ClCompile>
@@ -654,7 +675,13 @@
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetNetworkLayerProtocolMessage.cpp">
       <Filter>CASBACnetStack\NPDU</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetNetworkNumberIs.cpp">
+      <Filter>CASBACnetStack\NPDU</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetRejectMessageToNetwork.cpp">
+      <Filter>CASBACnetStack\NPDU</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetRouterAvailableToNetwork.cpp">
       <Filter>CASBACnetStack\NPDU</Filter>
     </ClCompile>
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetRouterBusyToNetwork.cpp">
@@ -664,6 +691,9 @@
       <Filter>CASBACnetStack\NPDU</Filter>
     </ClCompile>
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetNPDU.cpp">
+      <Filter>CASBACnetStack\NPDU</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetWhatIsNetworkNumber.cpp">
       <Filter>CASBACnetStack\NPDU</Filter>
     </ClCompile>
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetWhoIsRouterToNetwork.cpp">
@@ -720,6 +750,12 @@
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetStackNetworkKey.cpp">
       <Filter>CASBACnetStack\Database</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetStackNetworkPortBase.cpp">
+      <Filter>CASBACnetStack\Database</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetStackNetworkPortIpv4.cpp">
+      <Filter>CASBACnetStack\Database</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetStackObjectSettings.cpp">
       <Filter>CASBACnetStack\Database</Filter>
     </ClCompile>
@@ -751,6 +787,9 @@
       <Filter>CASBACnetStack\Processors</Filter>
     </ClCompile>
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetReadRangeProcessor.cpp">
+      <Filter>CASBACnetStack\Processors</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetReinitializeDeviceProcessor.cpp">
       <Filter>CASBACnetStack\Processors</Filter>
     </ClCompile>
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetComplexAckProcessor.cpp">
@@ -825,25 +864,10 @@
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetStackWritePropertyAsync.cpp">
       <Filter>CASBACnetStack\Helper</Filter>
     </ClCompile>
-    <ClCompile Include="CASBACnetStackExampleDatabase.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="SimpleUDP.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\submodules\cas-bacnet-stack\submodules\cas-common\source\ChipkinEndianness.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\submodules\cas-bacnet-stack\submodules\cas-common\source\ChipkinUtilities.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\submodules\cas-bacnet-stack\submodules\cas-common\source\ChipkinConvert.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\CASBACnetStackDLL.cpp">
+      <Filter>CASBACnetStack</Filter>
     </ClCompile>
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\adapters\cpp\CASBACnetStackAdapter.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\CASBACnetStackDLL.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -855,6 +879,18 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CASBACnetStackExampleDatabase.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SimpleUDP.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\submodules\cas-common\source\ChipkinEndianness.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\submodules\cas-common\source\ChipkinUtilities.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\submodules\cas-common\source\ChipkinConvert.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetStackCommon.h">
@@ -1247,6 +1283,12 @@
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetDeviceObjectReference.h">
       <Filter>CASBACnetStack\APDU\Base Types</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetHostAddress.h">
+      <Filter>CASBACnetStack\APDU\Base Types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetHostNPort.h">
+      <Filter>CASBACnetStack\APDU\Base Types</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetLandingCall.h">
       <Filter>CASBACnetStack\APDU\Base Types</Filter>
     </ClInclude>
@@ -1466,7 +1508,13 @@
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetNetworkLayerProtocolMessage.h">
       <Filter>CASBACnetStack\NPDU</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetNetworkNumberIs.h">
+      <Filter>CASBACnetStack\NPDU</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetRejectMessageToNetwork.h">
+      <Filter>CASBACnetStack\NPDU</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetRouterAvailableToNetwork.h">
       <Filter>CASBACnetStack\NPDU</Filter>
     </ClInclude>
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetRouterBusyToNetwork.h">
@@ -1476,6 +1524,9 @@
       <Filter>CASBACnetStack\NPDU</Filter>
     </ClInclude>
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetNPDU.h">
+      <Filter>CASBACnetStack\NPDU</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetWhatIsNetworkNumber.h">
       <Filter>CASBACnetStack\NPDU</Filter>
     </ClInclude>
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetInitializeRoutingTableAck.h">
@@ -1544,6 +1595,12 @@
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetStackNetworkKey.h">
       <Filter>CASBACnetStack\Database</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetStackNetworkPortBase.h">
+      <Filter>CASBACnetStack\Database</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetStackNetworkPortIpv4.h">
+      <Filter>CASBACnetStack\Database</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetStackObjectSettings.h">
       <Filter>CASBACnetStack\Database</Filter>
     </ClInclude>
@@ -1572,6 +1629,9 @@
       <Filter>CASBACnetStack\Processors</Filter>
     </ClInclude>
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetDeleteObjectProcessor.h">
+      <Filter>CASBACnetStack\Processors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetReinitializeDeviceProcessor.h">
       <Filter>CASBACnetStack\Processors</Filter>
     </ClInclude>
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetReadRangeProcessor.h">
@@ -1649,22 +1709,10 @@
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetStackWritePropertyAsync.h">
       <Filter>CASBACnetStack\Helper</Filter>
     </ClInclude>
-    <ClInclude Include="SimpleUDP.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\submodules\cas-bacnet-stack\submodules\cas-common\source\ChipkinEndianness.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\submodules\cas-bacnet-stack\submodules\cas-common\source\ChipkinUtilities.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\submodules\cas-bacnet-stack\submodules\cas-common\source\ChipkinConvert.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\CASBACnetStackDLL.h">
+      <Filter>CASBACnetStack</Filter>
     </ClInclude>
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\adapters\cpp\CASBACnetStackAdapter.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\CASBACnetStackDLL.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
