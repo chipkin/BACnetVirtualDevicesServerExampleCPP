@@ -259,7 +259,6 @@ int main()
 
 // Handle any user input.
 // Note: User input in this example is used for the following:
-//		i - increment the analog-input value. Used to test cov
 //		h - Display options
 //		q - Quit
 bool DoUserInput()
