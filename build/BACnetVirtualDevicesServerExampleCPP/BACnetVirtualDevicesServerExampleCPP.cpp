@@ -1,5 +1,17 @@
-// BACnetVirtualDevicesServerExampleCPP.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
+/*
+ * BACnet Virtual Devices Server Example C++
+ * ----------------------------------------------------------------------------
+ * BACnetVirtualDevicesServerExampleCPP.cpp
+ *
+ * In this CAS BACnet Stack example, we create a BACnet IP server with various
+ * virtual devices.
+ *
+ * More information https://github.com/chipkin/BACnetVirtualDevicesServerExampleCPP
+ *
+ * This file contains the 'main' function. Program execution begins and ends there.
+ *
+ * Created by: Steven Smethurst
+ */
 
 #include "CASBACnetStackAdapter.h"
 #include "CASBACnetStackExampleConstants.h"
@@ -95,7 +107,7 @@ int main()
 	}
 	std::cout << "OK, Connected to port" << std::endl;
 
-	// 3. Setup the callbacks. 
+	// 3. Setup the callbacks
 	// ---------------------------------------------------------------------------
 	std::cout << "FYI: Registering the callback Functions with the CAS BACnet Stack" << std::endl;
 
@@ -113,7 +125,7 @@ int main()
 	fpRegisterCallbackGetPropertyReal(CallbackGetPropertyReal);
 	fpRegisterCallbackGetPropertyUnsignedInteger(CallbackGetPropertyUInt);
 
-	// 4. Setup the BACnet device. 
+	// 4. Setup the BACnet device
 	// ---------------------------------------------------------------------------
 
 	std::cout << "Setting up main server device. device.instance=[" << g_database.mainDevice.instance << "]" << std::endl;
