@@ -133,7 +133,7 @@ int main()
 
 	std::cout << "Enabling ReadPropertyMultiple... ";
 	if (!fpSetServiceEnabled(g_database.mainDevice.instance, CASBACnetStackExampleConstants::SERVICE_READ_PROPERTY_MULTIPLE, true)) {
-		std::cerr << "Failed to enabled the ReadPropertyMultiple" << std::endl;
+		std::cerr << "Failed to enable the ReadPropertyMultiple" << std::endl;
 		return -1;
 	}
 	std::cout << "OK" << std::endl;
@@ -177,7 +177,7 @@ int main()
 
 			// Enable Read Property Multiple
 			if (!fpSetServiceEnabled(devIt->instance, CASBACnetStackExampleConstants::SERVICE_READ_PROPERTY_MULTIPLE, true)) {
-				std::cerr << "Failed to enabled the ReadPropertyMultiple" << std::endl;
+				std::cerr << "Failed to enable the ReadPropertyMultiple" << std::endl;
 				return -1;
 			}
 			std::cout << "OK" << std::endl;
@@ -190,14 +190,14 @@ int main()
 			}
 			std::cout << "OK" << std::endl;
 
-			// Enable Reliabiliyty property 
+			// Enable Reliability property 
 			fpSetPropertyByObjectTypeEnabled(devIt->instance, CASBACnetStackExampleConstants::OBJECT_TYPE_ANALOG_INPUT, CASBACnetStackExampleConstants::PROPERTY_IDENTIFIER_RELIABILITY, true);
 		}
 	}
 
 	// 5. Send I-Am of this device
 	// ---------------------------------------------------------------------------
-	// To be a good citizen on a BACnet network. We should annouce ourselfs when we start up. 
+	// To be a good citizen on a BACnet network. We should announce  ourselves when we start up. 
 	std::cout << "FYI: Sending I-AM broadcast" << std::endl;
 	uint8_t connectionString[6]; //= { 0xC0, 0xA8, 0x01, 0xFF, 0xBA, 0xC0 };
 	memcpy(connectionString, g_database.networkPort.BroadcastIPAddress, 4);
@@ -236,7 +236,6 @@ int main()
 
 		// Handle any user input.
 		// Note: User input in this example is used for the following:
-		//		i - increment the analog-input value. Used to test cov
 		//		h - Display options
 		//		q - Quit
 		if (!DoUserInput()) {
@@ -412,7 +411,7 @@ bool CallbackGetPropertyCharString(const uint32_t deviceInstance, const uint16_t
 	if (propertyIdentifier == CASBACnetStackExampleConstants::PROPERTY_IDENTIFIER_OBJECT_NAME) {
 		return GetObjectName(deviceInstance, objectType, objectInstance, value, valueElementCount, maxElementCount);
 	}
-	// Example of Device Desription
+	// Example of Device Description
 	else if (propertyIdentifier == CASBACnetStackExampleConstants::PROPERTY_IDENTIFIER_DESCRIPTION && objectType == CASBACnetStackExampleConstants::OBJECT_TYPE_DEVICE) {
 		return GetDeviceDescription(deviceInstance, value, valueElementCount, maxElementCount);
 	}
@@ -422,7 +421,7 @@ bool CallbackGetPropertyCharString(const uint32_t deviceInstance, const uint16_t
 // Callback used by the BACnet Stack to get Enumerated property values from the user
 bool CallbackGetPropertyEnum(uint32_t deviceInstance, uint16_t objectType, uint32_t objectInstance, uint32_t propertyIdentifier, uint32_t* value, bool useArrayIndex, uint32_t propertyArrayIndex)
 {
-	// Example of Binary Input / Value Object Present Value property
+	// Example of Analog Inputs Reliability Property
 	if (propertyIdentifier == CASBACnetStackExampleConstants::PROPERTY_IDENTIFIER_RELIABILITY) {
 		if (objectType == CASBACnetStackExampleConstants::OBJECT_TYPE_ANALOG_INPUT) {
 			if (g_database.analogInputs.count(deviceInstance) > 0 && g_database.analogInputs[deviceInstance].instance == objectInstance) {
@@ -433,7 +432,7 @@ bool CallbackGetPropertyEnum(uint32_t deviceInstance, uint16_t objectType, uint3
 		}
 	}
 
-	// Debug for customer 
+	// Example of System Status
 	if (propertyIdentifier == CASBACnetStackExampleConstants::PROPERTY_IDENTIFIER_SYSTEM_STATUS &&
 		objectType == CASBACnetStackExampleConstants::OBJECT_TYPE_DEVICE)
 	{
