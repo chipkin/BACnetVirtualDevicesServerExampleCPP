@@ -1,3 +1,13 @@
+/*
+ * BACnet Virtual Devices Server Example C++
+ * ----------------------------------------------------------------------------
+ * CASBACnetStackExampleDatabase.cpp
+ *
+ * Sets up virtual devices and in the database.
+ *
+ * Created by: Steven Smethurst
+*/
+
 #include "CASBACnetStackExampleDatabase.h"
 
 #include <time.h> // time()

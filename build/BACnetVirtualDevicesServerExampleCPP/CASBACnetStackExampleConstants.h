@@ -1,8 +1,16 @@
+/*
+ * BACnet Virtual Devices Server Example C++
+ * ----------------------------------------------------------------------------
+ * CASBACnetStackExampleConstants.h
+ *
+ * This is a fully static class that contains all the constants used by this example.
+ * This includes ObjectTypes, PropertyIdentifier, etc.
+ * 
+ * Created by: Steven Smethurst
+*/
+
 #ifndef __ExampleConstants_h__
 #define __ExampleConstants_h__
-
-// This is a fully static class that contains all the constants used by this example
-// This includes ObjectTypes, PropertyIdentifier, etc
 
 #include "datatypes.h"
 

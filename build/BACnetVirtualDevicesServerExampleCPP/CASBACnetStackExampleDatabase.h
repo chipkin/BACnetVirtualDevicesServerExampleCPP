@@ -1,12 +1,18 @@
+/*
+ * BACnet Virtual Devices Server Example C++
+ * ----------------------------------------------------------------------------
+ * CASBACnetStackExampleDatabase.h
+ *
+ * Data storage that contains the example data used in the BACnet Virtual 
+ * Devices Server Example. This data is represented by BACnet objects for this
+ * example. The database will contain multiple virtual devices that have one 
+ * object each.
+ *
+ * Created by: Steven Smethurst
+*/
+
 #ifndef __CASBACnetStackExampleDatabase_h__
 #define __CASBACnetStackExampleDatabase_h__
-
-// The CASBACnetStackExampleDatabase is a data store that contains the 
-// example data used in the BACnetVirtualDevicesServerExampleCPP
-
-// This data is represented by BACnet objects for this example.
-
-// The database will contain multiple virtual devices that have one object each
 
 #include <string>
 #include <string.h>
