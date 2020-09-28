@@ -57,7 +57,7 @@ ExampleDatabase g_database; // The example database that stores current values.
 
 // Constants
 // =======================================
-const std::string APPLICATION_VERSION = "0.0.2";  // See CHANGELOG.md for a full list of changes.
+const std::string APPLICATION_VERSION = "0.0.3";  // See CHANGELOG.md for a full list of changes.
 const uint32_t MAX_XML_RENDER_BUFFER_LENGTH = 1024 * 20;
 
 // Callback Functions to Register to the DLL
