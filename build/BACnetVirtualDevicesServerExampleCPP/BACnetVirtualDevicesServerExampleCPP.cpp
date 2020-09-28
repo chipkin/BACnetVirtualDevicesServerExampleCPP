@@ -142,6 +142,12 @@ int main()
 	// These are: Read Property, Who Is, Who Has
 	//
 	// Any other services need to be enabled as below.
+	std::cout << "Enabling IAm... ";
+	if (!fpSetServiceEnabled(g_database.mainDevice.instance, CASBACnetStackExampleConstants::SERVICE_I_AM, true)) {
+		std::cerr << "Failed to enable the IAm" << std::endl;
+		return -1;
+	}
+	std::cout << "OK" << std::endl;
 
 	std::cout << "Enabling ReadPropertyMultiple... ";
 	if (!fpSetServiceEnabled(g_database.mainDevice.instance, CASBACnetStackExampleConstants::SERVICE_READ_PROPERTY_MULTIPLE, true)) {
@@ -187,9 +193,17 @@ int main()
 			}
 			std::cout << "OK" << std::endl;
 
+			// Enable IAm
+			std::cout << "Enabling IAm... ";
+			if (!fpSetServiceEnabled(devIt->instance, CASBACnetStackExampleConstants::SERVICE_I_AM, true)) {
+				std::cerr << "Failed to enable IAm" << std::endl;
+				return -1;
+			}
+			std::cout << "OK" << std::endl;
+
 			// Enable Read Property Multiple
 			if (!fpSetServiceEnabled(devIt->instance, CASBACnetStackExampleConstants::SERVICE_READ_PROPERTY_MULTIPLE, true)) {
-				std::cerr << "Failed to enable the ReadPropertyMultiple" << std::endl;
+				std::cerr << "Failed to enable ReadPropertyMultiple" << std::endl;
 				return -1;
 			}
 			std::cout << "OK" << std::endl;
