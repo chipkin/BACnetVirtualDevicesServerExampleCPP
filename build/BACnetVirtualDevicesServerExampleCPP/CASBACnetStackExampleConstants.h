@@ -47,6 +47,7 @@ public:
 
 	// Services Supported
 	static const uint8_t SERVICE_READ_PROPERTY_MULTIPLE = 14;
+	static const uint8_t SERVICE_I_AM = 26;
 	
 	// Network Type
 	static const uint8_t NETWORK_TYPE_IPV4 = 5;
