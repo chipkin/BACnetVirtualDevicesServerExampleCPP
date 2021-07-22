@@ -2,6 +2,10 @@
 
 ## Version 0.0.x
 
+### 0.0.4 (2021-Jul-22)
+
+- Fixed issue where broadcast address would be set incorrectly for 0 subnet addresses (eg. 192.168.0.x)
+
 ### 0.0.3 (2020-Sep-28)
 
 - Updated to CAS BACnet Stack Version 3.19.0
