@@ -287,3 +287,7 @@ Examples/BACnetStackDLLServerExample
 build/msvs_17/enc_temp_folder/
 
 \.vscode/
+
+*.tlog
+
+*.recipe

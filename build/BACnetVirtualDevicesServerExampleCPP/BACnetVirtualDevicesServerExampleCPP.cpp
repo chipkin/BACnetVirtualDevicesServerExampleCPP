@@ -57,7 +57,7 @@ ExampleDatabase g_database; // The example database that stores current values.
 
 // Constants
 // =======================================
-const std::string APPLICATION_VERSION = "0.0.4";  // See CHANGELOG.md for a full list of changes.
+const std::string APPLICATION_VERSION = "0.0.5";  // See CHANGELOG.md for a full list of changes.
 const uint32_t MAX_XML_RENDER_BUFFER_LENGTH = 1024 * 20;
 
 // Callback Functions to Register to the DLL
@@ -178,7 +178,7 @@ int main()
 	std::map<uint16_t, std::vector<ExampleDatabaseDevice> >::iterator it;
 	for (it = g_database.virtualDevices.begin(); it != g_database.virtualDevices.end(); ++it) {
 		// Add the Virtual network
-		if (!fpAddVirtualNetwork(g_database.mainDevice.instance, it->first, it->first * 10)) {
+		if (!fpAddVirtualNetwork(g_database.mainDevice.instance, it->first, it->first)) {
 			std::cerr << "Failed to add virtual network " << it->first << std::endl;
 			return -1;
 		}
