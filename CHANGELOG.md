@@ -2,6 +2,10 @@
 
 ## Version 0.0.x
 
+### 0.0.6 (2024-Mar-27)
+
+- Updated the CAS BACnet Stack to version 4.3.5.x
+
 ### 0.0.5 (2021-Oct-14)
 
 - Updated the CAS BACnet Stack to version 3.24.10.x

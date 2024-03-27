@@ -57,7 +57,7 @@ ExampleDatabase g_database; // The example database that stores current values.
 
 // Constants
 // =======================================
-const std::string APPLICATION_VERSION = "0.0.5";  // See CHANGELOG.md for a full list of changes.
+const std::string APPLICATION_VERSION = "0.0.6";  // See CHANGELOG.md for a full list of changes.
 const uint32_t MAX_XML_RENDER_BUFFER_LENGTH = 1024 * 20;
 
 // Callback Functions to Register to the DLL
@@ -359,12 +359,12 @@ uint16_t CallbackReceiveMessage(uint8_t* message, const uint16_t maxMessageLengt
 		*receivedConnectionStringLength = 6;
 		*networkType = CASBACnetStackExampleConstants::NETWORK_TYPE_IP;
 
-		// Process the message as XML
-		static char xmlRenderBuffer[MAX_XML_RENDER_BUFFER_LENGTH];
-		if (fpDecodeAsXML((char*)message, bytesRead, xmlRenderBuffer, MAX_XML_RENDER_BUFFER_LENGTH) > 0) {
-			std::cout << xmlRenderBuffer << std::endl;
-			memset(xmlRenderBuffer, 0, MAX_XML_RENDER_BUFFER_LENGTH);
-		}
+		//// Process the message as XML
+		//static char xmlRenderBuffer[MAX_XML_RENDER_BUFFER_LENGTH];
+		//if (fpDecodeAsXML((char*)message, bytesRead, xmlRenderBuffer, MAX_XML_RENDER_BUFFER_LENGTH) > 0) {
+		//	std::cout << xmlRenderBuffer << std::endl;
+		//	memset(xmlRenderBuffer, 0, MAX_XML_RENDER_BUFFER_LENGTH);
+		//}
 	}
 
 	return bytesRead;
@@ -414,12 +414,12 @@ uint16_t CallbackSendMessage(const uint8_t* message, const uint16_t messageLengt
 		return 0;
 	}
 
-	// Get the XML rendered version of the just sent message
-	static char xmlRenderBuffer[MAX_XML_RENDER_BUFFER_LENGTH];
-	if (fpDecodeAsXML((char*)message, messageLength, xmlRenderBuffer, MAX_XML_RENDER_BUFFER_LENGTH) > 0) {
-		std::cout << xmlRenderBuffer << std::endl;
-		memset(xmlRenderBuffer, 0, MAX_XML_RENDER_BUFFER_LENGTH);
-	}
+	//// Get the XML rendered version of the just sent message
+	//static char xmlRenderBuffer[MAX_XML_RENDER_BUFFER_LENGTH];
+	//if (fpDecodeAsXML((char*)message, messageLength, xmlRenderBuffer, MAX_XML_RENDER_BUFFER_LENGTH) > 0) {
+	//	std::cout << xmlRenderBuffer << std::endl;
+	//	memset(xmlRenderBuffer, 0, MAX_XML_RENDER_BUFFER_LENGTH);
+	//}
 
 	return messageLength;
 }
