@@ -65,6 +65,7 @@ void ExampleDatabase::LoadVirtualDevices() {
 		virtualNetworkPort.instance = STARTING_VIRTUAL_NETWORK + (networkIndex * VIRTUAL_NETWORK_OFFSET); // Instance should not change based on the network number applied
 		uint16_t networkNumber = STARTING_VIRTUAL_NETWORK + (networkIndex * VIRTUAL_NETWORK_OFFSET);
 		virtualNetworkPort.networkNumber = networkNumber;
+		virtualNetworkPort.prevNetworkNumber = networkNumber;
 		this->virtualNetworkPorts[virtualNetworkPort.instance] = virtualNetworkPort;
 
 		for (size_t deviceIndex = 0; deviceIndex < NUMBER_OF_DEVICES_PER_NETWORK; deviceIndex++) {

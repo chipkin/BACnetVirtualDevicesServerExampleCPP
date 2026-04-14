@@ -59,39 +59,102 @@ The CAS BACnet Stack submodule is required for compilation.
 ## Example Output
 
 ```
-CAS BACnet Stack Virtual Devices Server Example v0.0.2.0
+CAS BACnet Stack Virtual Devices Server Example v0.0.6.0
 https://github.com/chipkin/BACnetVirtualDevicesServerExampleCPP
 
 FYI: Loading CAS BACnet Stack functions... OK
-FYI: CAS BACnet Stack version: 3.17.0.0
+FYI: CAS BACnet Stack version: 4.6.0.0
 FYI: Connecting UDP Resource to port=[47808]... OK, Connected to port
 FYI: Registering the callback Functions with the CAS BACnet Stack
 Setting up main server device. device.instance=[389999]
 Created Device.
+Enabling IAm... OK
 Enabling ReadPropertyMultiple... OK
+Enabling WriteProperty... OK
+Enabling ReinitializeDevice... OK
 Added NetworkPort. networkPort.instance=[1]... OK
 Adding Virtual Devices and Objects...
 Adding Virtual Device. device.instance=[100000] to network=[1000]...OK
+Enabling IAm... OK
 OK
 Adding Analog Input to Virtual Device. device.instance=[100000], analogInput.instance=[1]...OK
 Adding Virtual Device. device.instance=[100001] to network=[1000]...OK
+Enabling IAm... OK
 OK
 Adding Analog Input to Virtual Device. device.instance=[100001], analogInput.instance=[1]...OK
 Adding Virtual Device. device.instance=[100002] to network=[1000]...OK
+Enabling IAm... OK
 OK
 Adding Analog Input to Virtual Device. device.instance=[100002], analogInput.instance=[1]...OK
-Adding Virtual Device. device.instance=[100003] to network=[1000]...OK
+Adding Virtual Device. device.instance=[200000] to network=[2000]...OK
+Enabling IAm... OK
 OK
-...
-Adding Analog Input to Virtual Device. device.instance=[300008], analogInput.instance=[1]...OK
-Adding Virtual Device. device.instance=[300009] to network=[3000]...OK
+Adding Analog Input to Virtual Device. device.instance=[200000], analogInput.instance=[1]...OK
+Adding Virtual Device. device.instance=[200001] to network=[2000]...OK
+Enabling IAm... OK
 OK
-Adding Analog Input to Virtual Device. device.instance=[300009], analogInput.instance=[1]...OK
+Adding Analog Input to Virtual Device. device.instance=[200001], analogInput.instance=[1]...OK
+Adding Virtual Device. device.instance=[200002] to network=[2000]...OK
+Enabling IAm... OK
+OK
+Adding Analog Input to Virtual Device. device.instance=[200002], analogInput.instance=[1]...OK
+Adding Virtual Device. device.instance=[300000] to network=[3000]...OK
+Enabling IAm... OK
+OK
+Adding Analog Input to Virtual Device. device.instance=[300000], analogInput.instance=[1]...OK
+Adding Virtual Device. device.instance=[300001] to network=[3000]...OK
+Enabling IAm... OK
+OK
+Adding Analog Input to Virtual Device. device.instance=[300001], analogInput.instance=[1]...OK
+Adding Virtual Device. device.instance=[300002] to network=[3000]...OK
+Enabling IAm... OK
+OK
+Adding Analog Input to Virtual Device. device.instance=[300002], analogInput.instance=[1]...OK
 FYI: Sending I-AM broadcast
 
-FYI: Sending message to [192.168.1.255:47808] length [25]
-<!-- CAS BACnet Stack v3.17.0.0 --><BACnetPacket networkType='IP'><BVLL function='originalBroadcastNPDU' /><NPDU control='0x20' version='1'><DestinationNetwork>65535</DestinationNetwork><DestinationAddress length='0' /><HopCount>255</HopCount></NPDU><UnconfirmedRequestPDU serviceChoice='iAm'><IAmRequest><IAmDeviceIdentifier datatype='12' objectInstance='389999' objectType='8'>device, 389999</IAmDeviceIdentifier><MaxAPDULengthAccepted datatype='2' value='1476'>1476</MaxAPDULengthAccepted><SegmentationSupported datatype='9' value='3'>noSegmentation</SegmentationSupported><VendorId datatype='2' value='389'>389</VendorId></IAmRequest></UnconfirmedRequestPDU></BACnetPacket>
+FYI: Sending message to [192.168.2.255:47808] length [25]
 
-FYI: Sending message to [192.168.1.255:47808] length [31]
-<!-- CAS BACnet Stack v3.17.0.0 --><BACnetPacket networkType='IP'><BVLL function='originalBroadcastNPDU' /><NPDU control='0x28' version='1'><DestinationNetwork>65535</DestinationNetwork><DestinationAddress length='0' /><HopCount>254</HopCount><SourceNetwork>1000</SourceNetwork><SourceAddress length='3'>0x0186A0</SourceAddress></NPDU><UnconfirmedRequestPDU serviceChoice='iAm'><IAmRequest><IAmDeviceIdentifier datatype='12' objectInstance='100000' objectType='8'>device, 100000</IAmDeviceIdentifier><MaxAPDULengthAccepted datatype='2' value='1476'>1476</MaxAPDULengthAccepted><SegmentationSupported datatype='9' value='3'>noSegmentation</SegmentationSupported><VendorId datatype='2' value='389'>389</VendorId></IAmRequest></UnconfirmedRequestPDU></BACnetPacket>
+FYI: Sending message to [192.168.2.255:47808] length [31]
+
+FYI: Sending message to [192.168.2.255:47808] length [31]
+
+FYI: Sending message to [192.168.2.255:47808] length [31]
+
+FYI: Sending message to [192.168.2.255:47808] length [31]
+
+FYI: Sending message to [192.168.2.255:47808] length [31]
+
+FYI: Sending message to [192.168.2.255:47808] length [31]
+
+FYI: Sending message to [192.168.2.255:47808] length [31]
+
+FYI: Sending message to [192.168.2.255:47808] length [31]
+
+FYI: Sending message to [192.168.2.255:47808] length [31]
+
+FYI: Sending message to [192.168.2.255:47808] length [17]
+FYI: Entering main loop...
+
+FYI: Received message from [192.168.2.99:47808], length [25]
+
+FYI: Received message from [192.168.2.99:47808], length [31]
+
+FYI: Received message from [192.168.2.99:47808], length [31]
+
+FYI: Received message from [192.168.2.99:47808], length [31]
+
+FYI: Received message from [192.168.2.99:47808], length [31]
+
+FYI: Received message from [192.168.2.99:47808], length [31]
+
+FYI: Received message from [192.168.2.99:47808], length [31]
+
+FYI: Received message from [192.168.2.99:47808], length [31]
+
+FYI: Received message from [192.168.2.99:47808], length [31]
+
+FYI: Received message from [192.168.2.99:47808], length [31]
+
+FYI: Received message from [192.168.2.99:47808], length [17]
+::CASBACnetStack::BACnetNetworkLayer::ProcessNetworkLayerMessage() in file: X:\Work\Repos\BACnetVirtualDevicesServerExampleCPP\submodules\cas-bacnet-stack\source\BACnetNetworkLayer.cpp(339) - FYI: Received IAmRouterToNetwork, current implementation does not handle this type of network message, ignore
 ```

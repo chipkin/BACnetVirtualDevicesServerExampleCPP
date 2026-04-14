@@ -321,6 +321,10 @@ bool SetupDevice() {
 }
 
 bool SendIAm(uint8_t* connectionString, uint8_t connectionStringLength) {
+	if (connectionString == NULL) {
+		std::cerr << "Connection String buffer is null" << std::endl;
+		return false;
+	}
 	if (connectionStringLength < 6) {
 		std::cerr << "Connection String array too small" << std::endl;
 		return false;
@@ -373,9 +377,15 @@ void WarmStart() {
 	fpReset();
 	g_database.ReloadVirtualDevices();
 	RegisterCallbacks();
-	SetupDevice();
+	if (!SetupDevice()) {
+		std::cerr << "Unable to complete warm start: SetupDevice failed after reset" << std::endl;
+		return;
+	}
 	uint8_t connectionString[6];
-	SendIAm(connectionString, 6);
+	if (!SendIAm(connectionString, 6)) {
+		std::cerr << "Unable to complete warm start: SendIAm failed after device setup" << std::endl;
+		return;
+	}
 }
 
 void ActivateChanges() {
@@ -391,6 +401,7 @@ void ActivateChanges() {
 		if (!fpSendNetworkNumberIs(g_database.networkPort.networkNumber, g_database.networkPort.networkNumberQuality, connectionString, 6, CASBACnetStackExampleConstants::NETWORK_TYPE_IP, true, 65535, NULL, 0)) {
 			std::cerr << "Unable to send NetworkNumberIs broadcast for network number=[" << g_database.networkPort.networkNumber << "]" << std::endl;
 		}
+		g_database.networkPort.prevNetworkNumber = g_database.networkPort.networkNumber;
 	}
 
 	// Check if any of the virtual network ports have changed their network numbers and if so, send a IAmRouterToNetwork broadcast with the new network numbers.
@@ -403,6 +414,7 @@ void ActivateChanges() {
 			if (!fpUpdateVirtualNetworkNumber(networkPortIt->second.prevNetworkNumber, networkPortIt->second.networkNumber)) {
 				std::cerr << "Unable to update the virtual network number for virtual network port [" << networkPortIt->first << "]" << std::endl;
 			}
+			networkPortIt->second.prevNetworkNumber = networkPortIt->second.networkNumber;
 		}
 	}
 
@@ -733,6 +745,10 @@ bool CallbackSetPropertyUInt(const uint32_t deviceInstance, const uint16_t objec
 {
 	if (propertyIdentifier == CASBACnetStackExampleConstants::PROPERTY_IDENTIFIER_NETWORK_NUMBER) {
 		if (deviceInstance == g_database.mainDevice.instance) {
+			if (value > 65535) {
+				*errorCode = CASBACnetStackExampleConstants::ERROR_VALUE_OUT_OF_RANGE;
+				return false;
+			}
 			if (objectInstance == g_database.networkPort.instance) {
 				if (objectType == CASBACnetStackExampleConstants::OBJECT_TYPE_NETWORK_PORT) {
 					std::cout << "Received request to set Network Number property of the Network Port Object. value=[" << value << "], priority=[" << (int)priority << "]" << std::endl;
@@ -773,18 +789,18 @@ bool CallbackReinitializeDevice(const uint32_t deviceInstance, const uint32_t re
 		return false;
 	}
 
-	if (strcmp(password, "12345") != 0) {
+	if (strncmp(password, "12345", passwordLength) != 0) {
 		*errorCode = CASBACnetStackExampleConstants::ERROR_PASSWORD_FAILURE;
 		return false;
 	}
 
 	// In this example, only the NetworkPort Object FdBbmdAddress and FdSubscriptionLifetime properties are writable and need to be
-	// stored in non-volatile memory.  For the purpose of this example, we will not storing these values in non-volaitle memory.
+	// stored in non-volatile memory.  For the purpose of this example, we will not storing these values in non-volatile memory.
 
 	// 1. Store values that must be stored in non-volatile memory (i.e. must survive a reboot).
 
 	// 2. Apply any Network Port values that have been written to. 
-	// If any validation on the Network Port values failes, set errorCode to INVALID_CONFIGURATION_DATA (46)
+	// If any validation on the Network Port values fails, set errorCode to INVALID_CONFIGURATION_DATA (46)
 
 	// 3. Set Network Port ChangesPending property to false
 

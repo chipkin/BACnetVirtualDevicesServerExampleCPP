@@ -2,6 +2,11 @@
 
 ## Version 0.0.x
 
+### 0.0.6 (2026-Apr-14)
+
+- Updated the CAS BACnet Stack to version 4.6.0.x
+- Added support for writable network numbers
+
 ### 0.0.5 (2021-Oct-14)
 
 - Updated the CAS BACnet Stack to version 3.24.10.x

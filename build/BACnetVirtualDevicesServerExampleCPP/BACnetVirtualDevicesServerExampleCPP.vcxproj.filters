@@ -97,6 +97,9 @@
     <Filter Include="CASBACnetStack\BACnetSC\BACnetSCBVLL">
       <UniqueIdentifier>{d93b0f5f-5e92-447f-b296-7c338e4010f8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="docs">
+      <UniqueIdentifier>{e923d6e2-b4db-4994-947c-9a9880358179}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BACnetVirtualDevicesServerExampleCPP.cpp">
@@ -2498,5 +2501,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\CHANGELOG.md" />
+    <None Include="..\..\docs\writable-network-number.md">
+      <Filter>docs</Filter>
+    </None>
+    <None Include="..\..\README.md" />
   </ItemGroup>
 </Project>
