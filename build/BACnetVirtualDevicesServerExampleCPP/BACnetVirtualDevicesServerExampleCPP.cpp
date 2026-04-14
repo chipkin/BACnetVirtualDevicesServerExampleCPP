@@ -57,8 +57,11 @@ ExampleDatabase g_database; // The example database that stores current values.
 
 // Constants
 // =======================================
-const std::string APPLICATION_VERSION = "0.0.5";  // See CHANGELOG.md for a full list of changes.
+const std::string APPLICATION_VERSION = "0.0.6";  // See CHANGELOG.md for a full list of changes.
 const uint32_t MAX_XML_RENDER_BUFFER_LENGTH = 1024 * 20;
+bool g_warmStart; // Flag for when warm start reinitialization is requested.
+time_t g_warmStartTimer; // Timer used for delaying the warm start.
+bool g_activateChanges; // Flag for when activate changes is requested.  Allows us to handle the activation of changes outside of the CallbackReinitializeDevice
 
 // Callback Functions to Register to the DLL
 // Message Functions
@@ -69,22 +72,39 @@ uint16_t CallbackSendMessage(const uint8_t* message, const uint16_t messageLengt
 time_t CallbackGetSystemTime();
 
 // Get Property Functions
+bool CallbackGetPropertyBool(const uint32_t deviceInstance, const uint16_t objectType, const uint32_t objectInstance, const uint32_t propertyIdentifier, bool* value, const bool useArrayIndex, const uint32_t propertyArrayIndex);
 bool CallbackGetPropertyCharString(const uint32_t deviceInstance, const uint16_t objectType, const uint32_t objectInstance, const uint32_t propertyIdentifier, char* value, uint32_t* valueElementCount, const uint32_t maxElementCount, uint8_t* encodingType, const bool useArrayIndex, const uint32_t propertyArrayIndex);
 bool CallbackGetPropertyEnum(const uint32_t deviceInstance, const uint16_t objectType, const uint32_t objectInstance, const uint32_t propertyIdentifier, uint32_t* value, const bool useArrayIndex, const uint32_t propertyArrayIndex);
 bool CallbackGetPropertyOctetString(const uint32_t deviceInstance, const uint16_t objectType, const uint32_t objectInstance, const uint32_t propertyIdentifier, uint8_t* value, uint32_t* valueElementCount, const uint32_t maxElementCount, const bool useArrayIndex, const uint32_t propertyArrayIndex);
 bool CallbackGetPropertyReal(const uint32_t deviceInstance, const uint16_t objectType, const uint32_t objectInstance, const uint32_t propertyIdentifier, float* value, const bool useArrayIndex, const uint32_t propertyArrayIndex);
 bool CallbackGetPropertyUInt(const uint32_t deviceInstance, const uint16_t objectType, const uint32_t objectInstance, const uint32_t propertyIdentifier, uint32_t* value, const bool useArrayIndex, const uint32_t propertyArrayIndex);
 
+bool CallbackSetPropertyUInt(const uint32_t deviceInstance, const uint16_t objectType, const uint32_t objectInstance, const uint32_t propertyIdentifier, const uint32_t value, const bool useArrayIndex, const uint32_t propertyArrayIndex, const uint8_t priority, uint32_t* errorCode);
+
+bool CallbackReinitializeDevice(const uint32_t deviceInstance, const uint32_t reinitializedState, const char* password, const uint32_t passwordLength, uint32_t* errorCode);
+
 // Helper functions 
 bool DoUserInput();
+void RegisterCallbacks();
+bool SetupDevice();
+
 bool GetObjectName(const uint32_t deviceInstance, const uint16_t objectType, const uint32_t objectInstance, char* value, uint32_t* valueElementCount, const uint32_t maxElementCount);
 bool GetDeviceDescription(const uint32_t deviceInstance, char* value, uint32_t* valueElementCount, const uint32_t maxElementCount);
+
+bool SendIAm(uint8_t* connectionString, uint8_t connectionStringLength);
+void WarmStart();
+void ActivateChanges();
 
 int main()
 {
 	// Print the application version information 
 	std::cout << "CAS BACnet Stack Virtual Devices Server Example v" << APPLICATION_VERSION << "." << CIBUILDNUMBER << std::endl;
 	std::cout << "https://github.com/chipkin/BACnetVirtualDevicesServerExampleCPP" << std::endl << std::endl;
+
+	// Initialize global flags
+	g_warmStart = false;
+	g_warmStartTimer = time(0);
+	g_activateChanges = false;
 
 	// 1. Load the CAS BACnet stack functions
 	// ---------------------------------------------------------------------------
@@ -109,156 +129,40 @@ int main()
 
 	// 3. Setup the callbacks
 	// ---------------------------------------------------------------------------
-	std::cout << "FYI: Registering the callback Functions with the CAS BACnet Stack" << std::endl;
-
-	// Message Callback Functions
-	fpRegisterCallbackReceiveMessage(CallbackReceiveMessage);
-	fpRegisterCallbackSendMessage(CallbackSendMessage);
-
-	// System Time Callback Functions
-	fpRegisterCallbackGetSystemTime(CallbackGetSystemTime);
-
-	// Get Property Callback Functions
-	fpRegisterCallbackGetPropertyCharacterString(CallbackGetPropertyCharString);
-	fpRegisterCallbackGetPropertyEnumerated(CallbackGetPropertyEnum);
-	fpRegisterCallbackGetPropertyOctetString(CallbackGetPropertyOctetString);
-	fpRegisterCallbackGetPropertyReal(CallbackGetPropertyReal);
-	fpRegisterCallbackGetPropertyUnsignedInteger(CallbackGetPropertyUInt);
-
+	RegisterCallbacks();
+	
 	// 4. Setup the BACnet device
 	// ---------------------------------------------------------------------------
-
-	std::cout << "Setting up main server device. device.instance=[" << g_database.mainDevice.instance << "]" << std::endl;
-
-	// Create the Main Device
-	if (!fpAddDevice(g_database.mainDevice.instance)) {
-		std::cerr << "Failed to add Device." << std::endl;
-		return false;
-	}
-	std::cout << "Created Device." << std::endl;
-
-	// Enable the services that this device supports
-	// Some services are mandatory for BACnet devices and are already enabled.
-	// These are: Read Property, Who Is, Who Has
-	//
-	// Any other services need to be enabled as below.
-	std::cout << "Enabling IAm... ";
-	if (!fpSetServiceEnabled(g_database.mainDevice.instance, CASBACnetStackExampleConstants::SERVICE_I_AM, true)) {
-		std::cerr << "Failed to enable the IAm" << std::endl;
+	if (!SetupDevice()) {
+		std::cerr << "Failed to setup the BACnet device" << std::endl;
 		return -1;
 	}
-	std::cout << "OK" << std::endl;
-
-	std::cout << "Enabling ReadPropertyMultiple... ";
-	if (!fpSetServiceEnabled(g_database.mainDevice.instance, CASBACnetStackExampleConstants::SERVICE_READ_PROPERTY_MULTIPLE, true)) {
-		std::cerr << "Failed to enable the ReadPropertyMultiple" << std::endl;
-		return -1;
-	}
-	std::cout << "OK" << std::endl;
 	
-	// Enable Optional Device Properties
-	if (!fpSetPropertyEnabled(g_database.mainDevice.instance, CASBACnetStackExampleConstants::OBJECT_TYPE_DEVICE, g_database.mainDevice.instance, CASBACnetStackExampleConstants::PROPERTY_IDENTIFIER_DESCRIPTION, true)) {
-		std::cerr << "Failed to enable the description property for the Main Device" << std::endl;
-		return false;
-	}
-
-	// Add Main Device Objects
-	// ---------------------------------------
-
-	// Add the Network Port Object
-	std::cout << "Added NetworkPort. networkPort.instance=[" << g_database.networkPort.instance << "]... ";
-	if (!fpAddNetworkPortObject(g_database.mainDevice.instance, g_database.networkPort.instance, CASBACnetStackExampleConstants::NETWORK_TYPE_IPV4, CASBACnetStackExampleConstants::PROTOCOL_LEVEL_BACNET_APPLICATION, CASBACnetStackExampleConstants::NETWORK_PORT_LOWEST_PROTOCOL_LAYER)) {
-		std::cerr << "Failed to add NetworkPort" << std::endl;
-		return -1;
-	}
-	std::cout << "OK" << std::endl;
-
-	// Add Virtual Devices and Objects
-	std::cout << "Adding Virtual Devices and Objects..." << std::endl;
-	std::map<uint16_t, std::vector<ExampleDatabaseDevice> >::iterator it;
-	for (it = g_database.virtualDevices.begin(); it != g_database.virtualDevices.end(); ++it) {
-		// Add the Virtual network
-		if (!fpAddVirtualNetwork(g_database.mainDevice.instance, it->first, it->first)) {
-			std::cerr << "Failed to add virtual network " << it->first << std::endl;
-			return -1;
-		}
-
-		std::vector<ExampleDatabaseDevice>::iterator devIt;
-		for (devIt = it->second.begin(); devIt != it->second.end(); ++devIt) {
-			// Add the Virtual Device
-			std::cout << "Adding Virtual Device. device.instance=[" << devIt->instance << "] to network=[" << it->first << "]...";
-			if (!fpAddDeviceToVirtualNetwork(devIt->instance, it->first)) {
-				std::cerr << "Failed to add Virtual Device" << std::endl;
-				return -1;
-			}
-			std::cout << "OK" << std::endl;
-
-			// Enable IAm
-			std::cout << "Enabling IAm... ";
-			if (!fpSetServiceEnabled(devIt->instance, CASBACnetStackExampleConstants::SERVICE_I_AM, true)) {
-				std::cerr << "Failed to enable IAm" << std::endl;
-				return -1;
-			}
-			std::cout << "OK" << std::endl;
-
-			// Enable Read Property Multiple
-			if (!fpSetServiceEnabled(devIt->instance, CASBACnetStackExampleConstants::SERVICE_READ_PROPERTY_MULTIPLE, true)) {
-				std::cerr << "Failed to enable ReadPropertyMultiple" << std::endl;
-				return -1;
-			}
-			std::cout << "OK" << std::endl;
-
-			// Add the Analog Input to the Virtual Device
-			std::cout << "Adding Analog Input to Virtual Device. device.instance=[" << devIt->instance << "], analogInput.instance=[" << g_database.analogInputs[devIt->instance].instance << "]...";
-			if (!fpAddObject(devIt->instance, CASBACnetStackExampleConstants::OBJECT_TYPE_ANALOG_INPUT, g_database.analogInputs[devIt->instance].instance)) {
-				std::cerr << "Failed to add AnalogInput" << std::endl;
-				return -1;
-			}
-			std::cout << "OK" << std::endl;
-
-			// Enable Reliability property 
-			fpSetPropertyByObjectTypeEnabled(devIt->instance, CASBACnetStackExampleConstants::OBJECT_TYPE_ANALOG_INPUT, CASBACnetStackExampleConstants::PROPERTY_IDENTIFIER_RELIABILITY, true);
-		}
-	}
-
 	// 5. Send I-Am of this device
 	// ---------------------------------------------------------------------------
 	// To be a good citizen on a BACnet network. We should announce  ourselves when we start up. 
-	std::cout << "FYI: Sending I-AM broadcast" << std::endl;
+	
 	uint8_t connectionString[6]; //= { 0xC0, 0xA8, 0x01, 0xFF, 0xBA, 0xC0 };
-	memcpy(connectionString, g_database.networkPort.BroadcastIPAddress, 4);
-	connectionString[4] = g_database.networkPort.BACnetIPUDPPort / 256;
-	connectionString[5] = g_database.networkPort.BACnetIPUDPPort % 256;
-
-	// Send IAm for the Main Device
-	if (!fpSendIAm(g_database.mainDevice.instance, connectionString, 6, CASBACnetStackExampleConstants::NETWORK_TYPE_IP, true, 65535, NULL, 0)) {
-		std::cerr << "Unable to send IAm broadcast for mainDevice.instance=[" << g_database.mainDevice.instance << "]" << std::endl;
-		return false;
-	}
-
-	// Send IAm for each virtual device
-	for (it = g_database.virtualDevices.begin(); it != g_database.virtualDevices.end(); ++it) {
-		std::vector<ExampleDatabaseDevice>::iterator devIt;
-		for (devIt = it->second.begin(); devIt != it->second.end(); ++devIt) {
-			if (!fpSendIAm(devIt->instance, connectionString, 6, CASBACnetStackExampleConstants::NETWORK_TYPE_IP, true, 65535, NULL, 0)) {
-				std::cerr << "Unable to send IAm broadcast for virtualDevice.instance=[" << devIt->instance << "]" << std::endl;
-				return false;
-			}
-		}
-	}
-
-	// Send IAmRouterToNetwork
-	if (!fpSendIAmRouterToNetwork(connectionString, 6, CASBACnetStackExampleConstants::NETWORK_TYPE_IP, true, 65535, NULL, 0)) {
-		std::cerr << "Unable to send IAmRouterToNetwork broadcast" << std::endl;
-		return false;
+	if (!SendIAm(connectionString, 6)) {
+		return -1;
 	}
 
 	// 6. Start the main loop
 	// ---------------------------------------------------------------------------
 	std::cout << "FYI: Entering main loop..." << std::endl;
 	for (;;) {
+		// Starts warm start reinitialization when requested (after 3 seconds).
+		if (g_warmStart && g_warmStartTimer + 3 < time(0)) {
+			WarmStart();
+		}
+		// Activates changes when requested.
+		if(g_activateChanges) {
+			g_activateChanges = false;
+			ActivateChanges();
+		}
+
 		// Call the DLLs loop function which checks for messages and processes them.
-		fpLoop();
+		fpTick();
 
 		// Handle any user input.
 		// Note: User input in this example is used for the following:
@@ -278,6 +182,240 @@ int main()
 
 	// All done. 
 	return 0;
+}
+
+void RegisterCallbacks() {
+	std::cout << "FYI: Registering the callback Functions with the CAS BACnet Stack" << std::endl;
+
+	// Message Callback Functions
+	fpRegisterCallbackReceiveMessage(CallbackReceiveMessage);
+	fpRegisterCallbackSendMessage(CallbackSendMessage);
+
+	// System Time Callback Functions
+	fpRegisterCallbackGetSystemTime(CallbackGetSystemTime);
+
+	// Get Property Callback Functions
+	fpRegisterCallbackGetPropertyBool(CallbackGetPropertyBool);
+	fpRegisterCallbackGetPropertyCharacterString(CallbackGetPropertyCharString);
+	fpRegisterCallbackGetPropertyEnumerated(CallbackGetPropertyEnum);
+	fpRegisterCallbackGetPropertyOctetString(CallbackGetPropertyOctetString);
+	fpRegisterCallbackGetPropertyReal(CallbackGetPropertyReal);
+	fpRegisterCallbackGetPropertyUnsignedInteger(CallbackGetPropertyUInt);
+
+	// Set Property Callback Functions
+	fpRegisterCallbackSetPropertyUnsignedInteger(CallbackSetPropertyUInt);
+
+	// Remote Device Management
+	fpRegisterCallbackReinitializeDevice(CallbackReinitializeDevice);
+}
+
+bool SetupDevice() {
+	std::cout << "Setting up main server device. device.instance=[" << g_database.mainDevice.instance << "]" << std::endl;
+
+	// Create the Main Device
+	if (!fpAddDevice(g_database.mainDevice.instance)) {
+		std::cerr << "Failed to add Device." << std::endl;
+		return false;
+	}
+	std::cout << "Created Device." << std::endl;
+
+	// Enable the services that this device supports
+	// Some services are mandatory for BACnet devices and are already enabled.
+	// These are: Read Property, Who Is, Who Has
+	//
+	// Any other services need to be enabled as below.
+	std::cout << "Enabling IAm... ";
+	if (!fpSetServiceEnabled(g_database.mainDevice.instance, CASBACnetStackExampleConstants::SERVICE_I_AM, true)) {
+		std::cerr << "Failed to enable the IAm" << std::endl;
+		return false;
+	}
+	std::cout << "OK" << std::endl;
+
+	std::cout << "Enabling ReadPropertyMultiple... ";
+	if (!fpSetServiceEnabled(g_database.mainDevice.instance, CASBACnetStackExampleConstants::SERVICE_READ_PROPERTY_MULTIPLE, true)) {
+		std::cerr << "Failed to enable the ReadPropertyMultiple" << std::endl;
+		return false;
+	}
+	std::cout << "OK" << std::endl;
+
+	std::cout << "Enabling WriteProperty... ";
+	if (!fpSetServiceEnabled(g_database.mainDevice.instance, CASBACnetStackExampleConstants::SERVICE_WRITE_PROPERTY, true)) {
+		std::cerr << "Failed to enable the WriteProperty" << std::endl;
+		return false;
+	}
+	std::cout << "OK" << std::endl;
+
+	std::cout << "Enabling ReinitializeDevice... ";
+	if (!fpSetServiceEnabled(g_database.mainDevice.instance, CASBACnetStackExampleConstants::SERVICE_REINITIALIZE_DEVICE, true)) {
+		std::cerr << "Failed to enable the ReinitializeDevice" << std::endl;
+		return false;
+	}
+	std::cout << "OK" << std::endl;
+
+	// Enable Optional Device Properties
+	if (!fpSetPropertyEnabled(g_database.mainDevice.instance, CASBACnetStackExampleConstants::OBJECT_TYPE_DEVICE, g_database.mainDevice.instance, CASBACnetStackExampleConstants::PROPERTY_IDENTIFIER_DESCRIPTION, true)) {
+		std::cerr << "Failed to enable the description property for the Main Device" << std::endl;
+		return false;
+	}
+
+	// Add Main Device Objects
+	// ---------------------------------------
+
+	// Add the Network Port Object
+	std::cout << "Added NetworkPort. networkPort.instance=[" << g_database.networkPort.instance << "]... ";
+	if (!fpAddNetworkPortObjectWithNetworkNumber(g_database.mainDevice.instance, g_database.networkPort.instance, CASBACnetStackExampleConstants::NETWORK_TYPE_IPV4, CASBACnetStackExampleConstants::PROTOCOL_LEVEL_BACNET_APPLICATION, g_database.networkPort.networkNumber, g_database.networkPort.networkNumberQuality, CASBACnetStackExampleConstants::NETWORK_PORT_LOWEST_PROTOCOL_LAYER)) {
+		std::cerr << "Failed to add NetworkPort" << std::endl;
+		return false;
+	}
+	std::cout << "OK" << std::endl;
+
+	// Add Virtual Devices and Objects
+	std::cout << "Adding Virtual Devices and Objects..." << std::endl;
+	std::map<uint16_t, std::vector<ExampleDatabaseDevice> >::iterator it;
+	for (it = g_database.virtualDevices.begin(); it != g_database.virtualDevices.end(); ++it) {
+		// Add the Virtual network
+		if (!fpAddVirtualNetwork(g_database.mainDevice.instance, it->first, it->first)) {
+			std::cerr << "Failed to add virtual network " << it->first << std::endl;
+			return false;
+		}
+
+		std::vector<ExampleDatabaseDevice>::iterator devIt;
+		for (devIt = it->second.begin(); devIt != it->second.end(); ++devIt) {
+			// Add the Virtual Device
+			std::cout << "Adding Virtual Device. device.instance=[" << devIt->instance << "] to network=[" << it->first << "]...";
+			if (!fpAddDeviceToVirtualNetwork(devIt->instance, it->first)) {
+				std::cerr << "Failed to add Virtual Device" << std::endl;
+				return false;
+			}
+			std::cout << "OK" << std::endl;
+
+			// Enable IAm
+			std::cout << "Enabling IAm... ";
+			if (!fpSetServiceEnabled(devIt->instance, CASBACnetStackExampleConstants::SERVICE_I_AM, true)) {
+				std::cerr << "Failed to enable IAm" << std::endl;
+				return false;
+			}
+			std::cout << "OK" << std::endl;
+
+			// Enable Read Property Multiple
+			if (!fpSetServiceEnabled(devIt->instance, CASBACnetStackExampleConstants::SERVICE_READ_PROPERTY_MULTIPLE, true)) {
+				std::cerr << "Failed to enable ReadPropertyMultiple" << std::endl;
+				return false;
+			}
+			std::cout << "OK" << std::endl;
+
+
+			// Add the Analog Input to the Virtual Device
+			std::cout << "Adding Analog Input to Virtual Device. device.instance=[" << devIt->instance << "], analogInput.instance=[" << g_database.analogInputs[devIt->instance].instance << "]...";
+			if (!fpAddObject(devIt->instance, CASBACnetStackExampleConstants::OBJECT_TYPE_ANALOG_INPUT, g_database.analogInputs[devIt->instance].instance)) {
+				std::cerr << "Failed to add AnalogInput" << std::endl;
+				return false;
+			}
+			std::cout << "OK" << std::endl;
+
+			// Enable Reliability property 
+			fpSetPropertyByObjectTypeEnabled(devIt->instance, CASBACnetStackExampleConstants::OBJECT_TYPE_ANALOG_INPUT, CASBACnetStackExampleConstants::PROPERTY_IDENTIFIER_RELIABILITY, true);
+		}
+	}
+	return true;
+}
+
+bool SendIAm(uint8_t* connectionString, uint8_t connectionStringLength) {
+	if (connectionStringLength < 6) {
+		std::cerr << "Connection String array too small" << std::endl;
+		return false;
+	}
+
+	std::cout << "FYI: Sending I-AM broadcast" << std::endl;
+	memcpy(connectionString, g_database.networkPort.BroadcastIPAddress, 4);
+	connectionString[4] = g_database.networkPort.BACnetIPUDPPort / 256;
+	connectionString[5] = g_database.networkPort.BACnetIPUDPPort % 256;
+
+	// Send IAm for the Main Device
+	if (!fpSendIAm(g_database.mainDevice.instance, connectionString, 6, CASBACnetStackExampleConstants::NETWORK_TYPE_IP, true, 65535, NULL, 0)) {
+		std::cerr << "Unable to send IAm broadcast for mainDevice.instance=[" << g_database.mainDevice.instance << "]" << std::endl;
+		return false;
+	}
+
+	// Send IAm for each virtual device
+	std::map<uint16_t, std::vector<ExampleDatabaseDevice> >::iterator it;
+	for (it = g_database.virtualDevices.begin(); it != g_database.virtualDevices.end(); ++it) {
+		std::vector<ExampleDatabaseDevice>::iterator devIt;
+		for (devIt = it->second.begin(); devIt != it->second.end(); ++devIt) {
+			if (!fpSendIAm(devIt->instance, connectionString, 6, CASBACnetStackExampleConstants::NETWORK_TYPE_IP, true, 65535, NULL, 0)) {
+				std::cerr << "Unable to send IAm broadcast for virtualDevice.instance=[" << devIt->instance << "]" << std::endl;
+				return false;
+			}
+		}
+	}
+
+	// Send IAmRouterToNetwork
+	if (!fpSendIAmRouterToNetwork(connectionString, 6, CASBACnetStackExampleConstants::NETWORK_TYPE_IP, true, 65535, NULL, 0)) {
+		std::cerr << "Unable to send IAmRouterToNetwork broadcast" << std::endl;
+		return false;
+	}
+
+	// Finally Send NetworkNumberIs for the BACnet IP Network
+	if(g_database.networkPort.networkNumberQuality != 0) {
+		if (!fpSendNetworkNumberIs(g_database.networkPort.networkNumber, g_database.networkPort.networkNumberQuality, connectionString, 6, CASBACnetStackExampleConstants::NETWORK_TYPE_IP, true, 65535, NULL, 0)) {
+			std::cerr << "Unable to send NetworkNumberIs broadcast for network number=[" << g_database.networkPort.networkNumber << "]" << std::endl;
+			return false;
+		}
+	}
+
+	return true;
+}
+
+void WarmStart() {
+	std::cout << "FYI: Warm Start Initiating..." << std::endl;
+	g_warmStart = false;
+	g_warmStartTimer = time(0);
+	fpReset();
+	g_database.ReloadVirtualDevices();
+	RegisterCallbacks();
+	SetupDevice();
+	uint8_t connectionString[6];
+	SendIAm(connectionString, 6);
+}
+
+void ActivateChanges() {
+	std::cout << "FYI: Activating Changes for NetworkPort Objects..." << std::endl;
+
+	// Check if the IPv4 network port changed network number and if so, send a NetworkNumberIs broadcast with the new network number.
+	if (g_database.networkPort.prevNetworkNumber != g_database.networkPort.networkNumber) {
+		std::cout << "Network Port network number changed. Sending NetworkNumberIs broadcast with new network number=[" << g_database.networkPort.networkNumber << "]" << std::endl;
+		uint8_t connectionString[6];
+		memcpy(connectionString, g_database.networkPort.BroadcastIPAddress, 4);
+		connectionString[4] = g_database.networkPort.BACnetIPUDPPort / 256;
+		connectionString[5] = g_database.networkPort.BACnetIPUDPPort % 256;
+		if (!fpSendNetworkNumberIs(g_database.networkPort.networkNumber, g_database.networkPort.networkNumberQuality, connectionString, 6, CASBACnetStackExampleConstants::NETWORK_TYPE_IP, true, 65535, NULL, 0)) {
+			std::cerr << "Unable to send NetworkNumberIs broadcast for network number=[" << g_database.networkPort.networkNumber << "]" << std::endl;
+		}
+	}
+
+	// Check if any of the virtual network ports have changed their network numbers and if so, send a IAmRouterToNetwork broadcast with the new network numbers.
+	bool virtualNetworkPortChanged = false;
+	std::map<uint32_t, ExampleDatabaseNetworkPortBase>::iterator networkPortIt;
+	for (networkPortIt = g_database.virtualNetworkPorts.begin(); networkPortIt != g_database.virtualNetworkPorts.end(); ++networkPortIt) {
+		if (networkPortIt->second.prevNetworkNumber != 0 && networkPortIt->second.prevNetworkNumber != networkPortIt->second.networkNumber) {
+			std::cout << "Virtual Network Port [" << networkPortIt->first << "] network number changed to [" << networkPortIt->second.networkNumber << "]" << std::endl;
+			virtualNetworkPortChanged = true;
+			if (!fpUpdateVirtualNetworkNumber(networkPortIt->second.prevNetworkNumber, networkPortIt->second.networkNumber)) {
+				std::cerr << "Unable to update the virtual network number for virtual network port [" << networkPortIt->first << "]" << std::endl;
+			}
+		}
+	}
+
+	if(virtualNetworkPortChanged) {
+		std::cout << "Sending IAmRouterToNetwork broadcast with new network numbers..." << std::endl;
+		uint8_t connectionString[6];
+		memcpy(connectionString, g_database.networkPort.BroadcastIPAddress, 4);
+		connectionString[4] = g_database.networkPort.BACnetIPUDPPort / 256;
+		connectionString[5] = g_database.networkPort.BACnetIPUDPPort % 256;
+		if (!fpSendIAmRouterToNetwork(connectionString, 6, CASBACnetStackExampleConstants::NETWORK_TYPE_IP, true, 65535, NULL, 0)) {
+			std::cerr << "Unable to send IAmRouterToNetwork broadcast" << std::endl;
+		}
+	}
 }
 
 // Helper Functions
@@ -359,12 +497,12 @@ uint16_t CallbackReceiveMessage(uint8_t* message, const uint16_t maxMessageLengt
 		*receivedConnectionStringLength = 6;
 		*networkType = CASBACnetStackExampleConstants::NETWORK_TYPE_IP;
 
-		// Process the message as XML
-		static char xmlRenderBuffer[MAX_XML_RENDER_BUFFER_LENGTH];
-		if (fpDecodeAsXML((char*)message, bytesRead, xmlRenderBuffer, MAX_XML_RENDER_BUFFER_LENGTH) > 0) {
-			std::cout << xmlRenderBuffer << std::endl;
-			memset(xmlRenderBuffer, 0, MAX_XML_RENDER_BUFFER_LENGTH);
-		}
+		//// Process the message as XML
+		//static char xmlRenderBuffer[MAX_XML_RENDER_BUFFER_LENGTH];
+		//if (fpDecodeAsXML((char*)message, bytesRead, xmlRenderBuffer, MAX_XML_RENDER_BUFFER_LENGTH) > 0) {
+		//	std::cout << xmlRenderBuffer << std::endl;
+		//	memset(xmlRenderBuffer, 0, MAX_XML_RENDER_BUFFER_LENGTH);
+		//}
 	}
 
 	return bytesRead;
@@ -414,12 +552,12 @@ uint16_t CallbackSendMessage(const uint8_t* message, const uint16_t messageLengt
 		return 0;
 	}
 
-	// Get the XML rendered version of the just sent message
-	static char xmlRenderBuffer[MAX_XML_RENDER_BUFFER_LENGTH];
-	if (fpDecodeAsXML((char*)message, messageLength, xmlRenderBuffer, MAX_XML_RENDER_BUFFER_LENGTH) > 0) {
-		std::cout << xmlRenderBuffer << std::endl;
-		memset(xmlRenderBuffer, 0, MAX_XML_RENDER_BUFFER_LENGTH);
-	}
+	//// Get the XML rendered version of the just sent message
+	//static char xmlRenderBuffer[MAX_XML_RENDER_BUFFER_LENGTH];
+	//if (fpDecodeAsXML((char*)message, messageLength, xmlRenderBuffer, MAX_XML_RENDER_BUFFER_LENGTH) > 0) {
+	//	std::cout << xmlRenderBuffer << std::endl;
+	//	memset(xmlRenderBuffer, 0, MAX_XML_RENDER_BUFFER_LENGTH);
+	//}
 
 	return messageLength;
 }
@@ -428,6 +566,25 @@ uint16_t CallbackSendMessage(const uint8_t* message, const uint16_t messageLengt
 time_t CallbackGetSystemTime()
 {
 	return time(0);
+}
+
+// Callback used by the BACnet Stack to get Boolean property values from the user
+bool CallbackGetPropertyBool(uint32_t deviceInstance, uint16_t objectType, uint32_t objectInstance, uint32_t propertyIdentifier, bool* value, bool useArrayIndex, uint32_t propertyArrayIndex)
+{
+	// Network Port Object - Changes Pending property
+	if (propertyIdentifier == CASBACnetStackExampleConstants::PROPERTY_IDENTIFIER_CHANGES_PENDING) {
+		if (objectType == CASBACnetStackExampleConstants::OBJECT_TYPE_NETWORK_PORT && objectInstance == g_database.networkPort.instance) {
+			*value = g_database.networkPort.changesPending;
+			return true;
+		}
+		else if (objectType == CASBACnetStackExampleConstants::OBJECT_TYPE_NETWORK_PORT) {
+			if (g_database.virtualNetworkPorts.count(objectInstance) > 0) {
+				*value = g_database.virtualNetworkPorts[objectInstance].changesPending;
+				return true;
+			}
+		}
+	}
+	return false;
 }
 
 // Callback used by the BACnet Stack to get Character String property values from the user
@@ -571,6 +728,97 @@ bool CallbackGetPropertyUInt(uint32_t deviceInstance, uint16_t objectType, uint3
 	return false;
 }
 
+// Callback used by the BACnet Stack to set Date property values to the user
+bool CallbackSetPropertyUInt(const uint32_t deviceInstance, const uint16_t objectType, const uint32_t objectInstance, const uint32_t propertyIdentifier, const uint32_t value, const bool useArrayIndex, const uint32_t propertyArrayIndex, const uint8_t priority, uint32_t* errorCode)
+{
+	if (propertyIdentifier == CASBACnetStackExampleConstants::PROPERTY_IDENTIFIER_NETWORK_NUMBER) {
+		if (deviceInstance == g_database.mainDevice.instance) {
+			if (objectInstance == g_database.networkPort.instance) {
+				if (objectType == CASBACnetStackExampleConstants::OBJECT_TYPE_NETWORK_PORT) {
+					std::cout << "Received request to set Network Number property of the Network Port Object. value=[" << value << "], priority=[" << (int)priority << "]" << std::endl;
+					g_database.networkPort.prevNetworkNumber = g_database.networkPort.networkNumber;
+					g_database.networkPort.networkNumber = value;
+					g_database.networkPort.networkNumberQuality = 3;
+					g_database.networkPort.changesPending = true;
+					return true;
+				}
+			}
+			else if (g_database.virtualNetworkPorts.count(objectInstance) > 0) {
+				g_database.virtualNetworkPorts[objectInstance].prevNetworkNumber = g_database.virtualNetworkPorts[objectInstance].networkNumber;
+				g_database.virtualNetworkPorts[objectInstance].networkNumber = value;
+				g_database.virtualNetworkPorts[objectInstance].networkNumberQuality = 3;
+				g_database.virtualNetworkPorts[objectInstance].changesPending = true;
+				return true;
+			}
+		}
+	}
+
+	return false;
+}
+
+bool CallbackReinitializeDevice(const uint32_t deviceInstance, const uint32_t reinitializedState, const char* password, const uint32_t passwordLength, uint32_t* errorCode) {
+	// This callback is called when this BACnet Server device receives a ReinitializeDevice message
+	// In this callback, you will handle the reinitializedState.
+	// If reinitializedState = ACTIVATE_CHANGES (7) then you will apply any network port changes and store the values in non-volatile memory
+	// If reinitializedState = WARM_START(1) then you will apply any network port changes, store the values in non-volatile memory, and restart the device.
+
+	// Before handling the reinitializedState, first check the password.
+	// If your device does not require a password, then ignore any password passed in.
+	// Otherwise, validate the password.
+	//		If password invalid, missing, or incorrect: set errorCode to PasswordInvalid (26)
+	// In this example, a password of 12345 is required.
+
+	if (password == NULL || passwordLength == 0) {
+		*errorCode = CASBACnetStackExampleConstants::ERROR_PASSWORD_FAILURE;
+		return false;
+	}
+
+	if (strcmp(password, "12345") != 0) {
+		*errorCode = CASBACnetStackExampleConstants::ERROR_PASSWORD_FAILURE;
+		return false;
+	}
+
+	// In this example, only the NetworkPort Object FdBbmdAddress and FdSubscriptionLifetime properties are writable and need to be
+	// stored in non-volatile memory.  For the purpose of this example, we will not storing these values in non-volaitle memory.
+
+	// 1. Store values that must be stored in non-volatile memory (i.e. must survive a reboot).
+
+	// 2. Apply any Network Port values that have been written to. 
+	// If any validation on the Network Port values failes, set errorCode to INVALID_CONFIGURATION_DATA (46)
+
+	// 3. Set Network Port ChangesPending property to false
+
+	// 4. Handle ReinitializedState. If ACTIVATE_CHANGES, no other action, return true.
+	//								 If WARM_START, prepare device for reboot, return true. and reboot.  
+	// NOTE: Must return true first before rebooting so the stack sends the SimpleAck.
+	if (reinitializedState == CASBACnetStackExampleConstants::REINITIALIZED_STATE_ACTIVATE_CHANGES) {
+		g_database.networkPort.changesPending = false;
+		std::map<uint32_t, ExampleDatabaseNetworkPortBase>::iterator it;
+		for (it = g_database.virtualNetworkPorts.begin(); it != g_database.virtualNetworkPorts.end(); ++it) {
+			it->second.changesPending = false;
+		}
+
+		g_activateChanges = true;
+		return true;
+	}
+	else if (reinitializedState == CASBACnetStackExampleConstants::REINITIALIZED_STATE_WARM_START) {
+		// Flag for reboot and handle reboot after stack responds with SimpleAck.
+		g_warmStart = true;
+		g_database.networkPort.changesPending = false;
+		std::map<uint32_t, ExampleDatabaseNetworkPortBase>::iterator it;
+		for (it = g_database.virtualNetworkPorts.begin(); it != g_database.virtualNetworkPorts.end(); ++it) {
+			it->second.changesPending = false;
+		}
+		g_warmStartTimer = time(0);
+		return true;
+	}
+	else {
+		// All other states are not supported in this example.
+		*errorCode = CASBACnetStackExampleConstants::ERROR_OPTIONAL_FUNCTIONALITY_NOT_SUPPORTED;
+		return false;
+	}
+}
+
 // Gets the object name based on the provided parameters
 bool GetObjectName(const uint32_t deviceInstance, const uint16_t objectType, const uint32_t objectInstance, char* value, uint32_t* valueElementCount, const uint32_t maxElementCount)
 {
@@ -633,7 +881,7 @@ bool GetObjectName(const uint32_t deviceInstance, const uint16_t objectType, con
 		// Get the name of a virtual network port object
 		if (deviceInstance == g_database.mainDevice.instance) {
 			// Virtual network port object representing one of the virtual networks
-			std::string name = "Network Port for virtual network " + ChipkinCommon::ChipkinConvert::ToString(objectInstance / 10);
+			std::string name = "Network Port for virtual network " + ChipkinCommon::ChipkinConvert::ToString(objectInstance);
 			memcpy(value, name.c_str(), name.size());
 			*valueElementCount = name.size();
 			return true;

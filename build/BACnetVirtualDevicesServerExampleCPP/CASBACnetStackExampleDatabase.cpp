@@ -45,8 +45,28 @@ void ExampleDatabase::Setup() {
 	this->mainDevice.objectName = "Virtual Devices Container";
 	this->mainDevice.description = "Chipkin test BACnet IP Virtual Devices Server device";
 	this->mainDevice.systemStatus = 0;	// operational (0), non-operational (4)
+		
+	this->networkPort.instance = 1;
+	this->networkPort.objectName = "Network Port for Ipv4";
+	this->networkPort.changesPending = false;
+	this->networkPort.networkNumber = 0;
+	this->networkPort.networkNumberQuality = 0; // unknown (0), learned (1), learned-configured (2), configured (3)
+	this->networkPort.prevNetworkNumber = 0;
+	this->LoadNetworkPortProperties();
 
+	this->LoadVirtualDevices();
+}
+
+void ExampleDatabase::LoadVirtualDevices() {
 	for (size_t networkIndex = 0; networkIndex < NUMBER_OF_VIRTUAL_NETWORKS; networkIndex++) {
+		ExampleDatabaseNetworkPortBase virtualNetworkPort;
+		virtualNetworkPort.changesPending = false;
+		virtualNetworkPort.networkNumberQuality = 3; // unknown (0), learned (1), learned-configured (2), configured (3)
+		virtualNetworkPort.instance = STARTING_VIRTUAL_NETWORK + (networkIndex * VIRTUAL_NETWORK_OFFSET); // Instance should not change based on the network number applied
+		uint16_t networkNumber = STARTING_VIRTUAL_NETWORK + (networkIndex * VIRTUAL_NETWORK_OFFSET);
+		virtualNetworkPort.networkNumber = networkNumber;
+		this->virtualNetworkPorts[virtualNetworkPort.instance] = virtualNetworkPort;
+
 		for (size_t deviceIndex = 0; deviceIndex < NUMBER_OF_DEVICES_PER_NETWORK; deviceIndex++) {
 			ExampleDatabaseDevice device;
 			device.instance = STARTING_DEVICE_INSTANCE + (networkIndex * STARTING_DEVICE_INSTANCE) + deviceIndex;
@@ -64,14 +84,38 @@ void ExampleDatabase::Setup() {
 			this->analogInputs[device.instance] = analogInput;
 
 			// Add the device
-			uint16_t network = STARTING_VIRTUAL_NETWORK + (networkIndex * VIRTUAL_NETWORK_OFFSET);
-			this->virtualDevices[network].push_back(device);
+			this->virtualDevices[networkNumber].push_back(device);
 		}
 	}
+}
 
-	this->networkPort.instance = 1;
-	this->networkPort.objectName = "Network Port for Ipv4";
-	this->LoadNetworkPortProperties();
+void ExampleDatabase::ReloadVirtualDevices() {
+	this->virtualDevices.clear();
+	uint32_t networkIndex = 0;
+	std::map<uint32_t, ExampleDatabaseNetworkPortBase>::iterator networkPortIt;
+	for (networkPortIt = this->virtualNetworkPorts.begin(); networkPortIt != this->virtualNetworkPorts.end(); ++networkPortIt) {
+		for (size_t deviceIndex = 0; deviceIndex < NUMBER_OF_DEVICES_PER_NETWORK; deviceIndex++) {
+			ExampleDatabaseDevice device;
+			device.instance = STARTING_DEVICE_INSTANCE + (networkIndex * STARTING_DEVICE_INSTANCE) + deviceIndex;
+			std::string color = ExampleDatabase::GetColorName();
+			device.objectName = "Virtual Device " + color;
+			device.description = "Example virtual device";
+			device.systemStatus = 0;	// operational (0), non-operational (4)
+
+			// Create the object
+			ExampleDatabaseAnalogInput analogInput;
+			analogInput.instance = 1;
+			analogInput.presentValue = (networkIndex * 100) + deviceIndex + 1;
+			analogInput.objectName = "Analog Input " + color;
+			analogInput.reliability = 0;  // no-fault-detected (0), unreliable-other (7)
+			this->analogInputs[device.instance] = analogInput;
+			
+			// Add the device
+			uint16_t networkNumber = networkPortIt->second.networkNumber;
+			this->virtualDevices[networkNumber].push_back(device);
+		}
+		networkIndex++;
+	}
 }
 
 void ExampleDatabase::LoadNetworkPortProperties() {
