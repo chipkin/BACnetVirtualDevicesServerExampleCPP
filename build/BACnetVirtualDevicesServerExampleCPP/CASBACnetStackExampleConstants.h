@@ -42,11 +42,15 @@ public:
 	static const uint32_t PROPERTY_IDENTIFIER_IP_DNS_SERVER = 406;
 	static const uint32_t PROPERTY_IDENTIFIER_IP_SUBNET_MASK = 411;
 	static const uint32_t PROPERTY_IDENTIFIER_BACNET_IP_UDP_PORT = 412;
+	static const uint32_t PROPERTY_IDENTIFIER_CHANGES_PENDING = 416;
 	static const uint32_t PROPERTY_IDENTIFIER_LINK_SPEED = 420;
 	static const uint32_t PROPERTY_IDENTIFIER_MAC_ADDRESS = 423;
+	static const uint32_t PROPERTY_IDENTIFIER_NETWORK_NUMBER = 425;
 
 	// Services Supported
 	static const uint8_t SERVICE_READ_PROPERTY_MULTIPLE = 14;
+	static const uint8_t SERVICE_WRITE_PROPERTY = 15;
+	static const uint8_t SERVICE_REINITIALIZE_DEVICE = 20;
 	static const uint8_t SERVICE_I_AM = 26;
 	
 	// Network Type
@@ -69,6 +73,18 @@ public:
 	static const uint32_t DATA_TYPE_DATE = 10;
 	static const uint32_t DATA_TYPE_TIME = 11;
 	static const uint32_t DATA_TYPE_BACNET_OBJECT_IDENTIFIER = 12;
+
+	// Error Codes
+	static const uint8_t ERROR_MISSING_REQUIRED_PARAMETER = 16;
+	static const uint8_t ERROR_NO_SPACE_TO_WRITE_PROPERTY = 20;
+	static const uint8_t ERROR_PASSWORD_FAILURE = 26;
+	static const uint8_t ERROR_VALUE_OUT_OF_RANGE = 37;
+	static const uint8_t ERROR_OPTIONAL_FUNCTIONALITY_NOT_SUPPORTED = 45;
+	static const uint8_t ERROR_INVALID_CONFIGURATION_DATA = 46;
+
+	// Reinitialized State
+	static const uint8_t REINITIALIZED_STATE_WARM_START = 1;
+	static const uint8_t REINITIALIZED_STATE_ACTIVATE_CHANGES = 7;
 };
 
 #endif // __ExampleConstants_h__

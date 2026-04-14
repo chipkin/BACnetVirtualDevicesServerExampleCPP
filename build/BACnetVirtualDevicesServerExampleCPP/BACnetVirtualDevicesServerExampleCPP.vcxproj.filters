@@ -14,64 +14,91 @@
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
     <Filter Include="CASBACnetStack">
-      <UniqueIdentifier>{fcc81563-ac36-4551-b969-77ae94d2df22}</UniqueIdentifier>
+      <UniqueIdentifier>{79b65650-7c96-4b47-9280-1f4ad08a6cec}</UniqueIdentifier>
     </Filter>
     <Filter Include="CASBACnetStack\Enumerated">
-      <UniqueIdentifier>{a0ed6bcd-83ae-4fc8-b026-0e380de357e9}</UniqueIdentifier>
+      <UniqueIdentifier>{495e0264-cf43-4634-afb8-95796db67ff1}</UniqueIdentifier>
     </Filter>
     <Filter Include="CASBACnetStack\Bitstrings">
-      <UniqueIdentifier>{d7f74528-e945-469b-acdd-06c83866a27d}</UniqueIdentifier>
+      <UniqueIdentifier>{a60d5888-cc06-4333-8d67-e40d0e3506ad}</UniqueIdentifier>
     </Filter>
     <Filter Include="CASBACnetStack\APDU">
-      <UniqueIdentifier>{ca2f9e76-9714-4b29-9dcc-b81baff06448}</UniqueIdentifier>
+      <UniqueIdentifier>{4f095674-5153-4e71-ade7-8853ba117220}</UniqueIdentifier>
     </Filter>
     <Filter Include="CASBACnetStack\APDU\Primitives">
-      <UniqueIdentifier>{b77a9dea-3868-4e8a-9585-46dbe1fc6954}</UniqueIdentifier>
+      <UniqueIdentifier>{6dc50ac5-d80a-4165-b04c-470572818a0a}</UniqueIdentifier>
     </Filter>
     <Filter Include="CASBACnetStack\APDU\Error Productions">
-      <UniqueIdentifier>{1e2b59d2-923f-438b-95b7-2771958b27da}</UniqueIdentifier>
+      <UniqueIdentifier>{19ab3b05-4217-4a43-86a0-511b0f838908}</UniqueIdentifier>
     </Filter>
     <Filter Include="CASBACnetStack\APDU\Base Types">
-      <UniqueIdentifier>{f8c1323b-42b1-4c4b-84c0-ac46b842c058}</UniqueIdentifier>
+      <UniqueIdentifier>{280829b6-4063-4899-8d9c-4ea71458a419}</UniqueIdentifier>
     </Filter>
     <Filter Include="CASBACnetStack\APDU\Unconfirmed Service Productions">
-      <UniqueIdentifier>{ea4096e0-445d-46e7-b80c-5f0648fc689e}</UniqueIdentifier>
+      <UniqueIdentifier>{b0b7d2cf-fc12-476d-adfc-a48b2cb5d58d}</UniqueIdentifier>
     </Filter>
     <Filter Include="CASBACnetStack\APDU\Confirmed Service Productions">
-      <UniqueIdentifier>{261be5b7-f0e2-499e-b36c-4ac1b4b297d3}</UniqueIdentifier>
+      <UniqueIdentifier>{c216c92f-7eda-4c27-a36c-03b6966fdb83}</UniqueIdentifier>
     </Filter>
     <Filter Include="CASBACnetStack\APDU\Custom Types">
-      <UniqueIdentifier>{b5811021-d874-413b-982c-f09e8390fdf4}</UniqueIdentifier>
+      <UniqueIdentifier>{1ed56324-3c76-417f-803e-91ededa73558}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CASBACnetStack\APDU\Notification Parameters">
+      <UniqueIdentifier>{6e3e82c0-2deb-40fa-ba40-759a8c0a386c}</UniqueIdentifier>
     </Filter>
     <Filter Include="CASBACnetStack\PDU">
-      <UniqueIdentifier>{24413c96-b21a-4111-a849-009e4b9510a5}</UniqueIdentifier>
+      <UniqueIdentifier>{8f7bb49d-5958-49df-96af-01485d833fa5}</UniqueIdentifier>
     </Filter>
     <Filter Include="CASBACnetStack\Interfaces">
-      <UniqueIdentifier>{a31d3e04-a8b8-42b9-a3da-3fc3411ff483}</UniqueIdentifier>
+      <UniqueIdentifier>{886fbba0-9e66-4ef6-b87d-fe80455767a5}</UniqueIdentifier>
     </Filter>
     <Filter Include="CASBACnetStack\NPDU">
-      <UniqueIdentifier>{a73ee4c6-b58d-4117-9a03-1ce6de399cd7}</UniqueIdentifier>
+      <UniqueIdentifier>{5b35ae4e-07d2-42fc-9fa9-4097cbedb4c3}</UniqueIdentifier>
     </Filter>
     <Filter Include="CASBACnetStack\BVLL">
-      <UniqueIdentifier>{6ba48045-f5db-49b6-92ca-d4a26524df3f}</UniqueIdentifier>
+      <UniqueIdentifier>{a8261c58-ff41-4817-a2ab-eb0aa2816c44}</UniqueIdentifier>
     </Filter>
     <Filter Include="CASBACnetStack\Packet">
-      <UniqueIdentifier>{af6adb2d-ca43-46a6-8d9e-f2a4161d0318}</UniqueIdentifier>
+      <UniqueIdentifier>{a35fa73f-662a-4c72-8f35-0d0edb027457}</UniqueIdentifier>
     </Filter>
     <Filter Include="CASBACnetStack\Renderer">
-      <UniqueIdentifier>{8252b653-3d58-4b4c-9ed9-17138dd7bf8e}</UniqueIdentifier>
+      <UniqueIdentifier>{11201d31-9dec-4ab2-963b-7f28669e0b2f}</UniqueIdentifier>
     </Filter>
     <Filter Include="CASBACnetStack\Database">
-      <UniqueIdentifier>{52caa2a9-37aa-466e-9b31-d869077f3b67}</UniqueIdentifier>
+      <UniqueIdentifier>{14a3e559-1c33-4d66-863c-bc206d908bee}</UniqueIdentifier>
     </Filter>
     <Filter Include="CASBACnetStack\Processors">
-      <UniqueIdentifier>{78258665-8324-4240-b077-6dfda79a5203}</UniqueIdentifier>
+      <UniqueIdentifier>{8dae826f-0a10-46b0-9a74-6255822950ef}</UniqueIdentifier>
     </Filter>
     <Filter Include="CASBACnetStack\MessageGenerators">
-      <UniqueIdentifier>{fb94c998-46f3-4d87-8ce1-3f609b508c86}</UniqueIdentifier>
+      <UniqueIdentifier>{cd00eef1-de8b-4033-b4e1-6325b942f954}</UniqueIdentifier>
     </Filter>
     <Filter Include="CASBACnetStack\Helper">
-      <UniqueIdentifier>{bb3e4262-8195-4753-8c40-99bc8322272a}</UniqueIdentifier>
+      <UniqueIdentifier>{eba96b65-a6db-4ae3-97f9-59b6d23dde11}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CASBACnetStack\AlarmsAndEvents">
+      <UniqueIdentifier>{81a231d2-85e6-4278-a654-2f8c09a4ac68}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CASBACnetStack\AlarmsAndEvents\EventAlgorithms">
+      <UniqueIdentifier>{ba693d8c-0e63-4cd4-9e25-de958c1b550f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CASBACnetStack\AlarmsAndEvents\FaultAlgorithms">
+      <UniqueIdentifier>{414e4540-eece-4eab-b29f-c4d8bddc58ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CASBACnetStack\DataLink">
+      <UniqueIdentifier>{8d8607f7-d21b-457b-9871-79410d3c9790}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CASBACnetStack\NetworkLayer">
+      <UniqueIdentifier>{d462ca71-6405-4f48-8156-037148b52515}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CASBACnetStack\BACnetSC">
+      <UniqueIdentifier>{0a04accb-d1ee-444e-a9ae-df8e59612686}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CASBACnetStack\BACnetSC\BACnetSCBVLL">
+      <UniqueIdentifier>{d93b0f5f-5e92-447f-b296-7c338e4010f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="docs">
+      <UniqueIdentifier>{e923d6e2-b4db-4994-947c-9a9880358179}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -93,9 +120,6 @@
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\submodules\cas-common\source\ChipkinConvert.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\submodules\cas-bacnet-stack\adapters\cpp\CASBACnetStackAdapter.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetStackCommon.cpp">
       <Filter>CASBACnetStack</Filter>
     </ClCompile>
@@ -114,10 +138,16 @@
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetRouter.cpp">
       <Filter>CASBACnetStack</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetStackDebug.cpp">
+      <Filter>CASBACnetStack</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetTag.cpp">
       <Filter>CASBACnetStack</Filter>
     </ClCompile>
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\CErrorContainer.cpp">
+      <Filter>CASBACnetStack</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\MSTP.c">
       <Filter>CASBACnetStack</Filter>
     </ClCompile>
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetAbortReason.cpp">
@@ -147,10 +177,19 @@
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetAccumulatorStatus.cpp">
       <Filter>CASBACnetStack\Enumerated</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetAcknowledgementFilter.cpp">
+      <Filter>CASBACnetStack\Enumerated</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetAction.cpp">
       <Filter>CASBACnetStack\Enumerated</Filter>
     </ClCompile>
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetEnableDisable.cpp">
+      <Filter>CASBACnetStack\Enumerated</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetEventStateFilter.cpp">
+      <Filter>CASBACnetStack\Enumerated</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetMessagePriority.cpp">
       <Filter>CASBACnetStack\Enumerated</Filter>
     </ClCompile>
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetReinitializedStateOfDevice.cpp">
@@ -438,7 +477,16 @@
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetAddressBinding.cpp">
       <Filter>CASBACnetStack\APDU\Base Types</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetAlarmSummary.cpp">
+      <Filter>CASBACnetStack\APDU\Base Types</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetAssignedLandingCalls.cpp">
+      <Filter>CASBACnetStack\APDU\Base Types</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetAuthenticationFactor.cpp">
+      <Filter>CASBACnetStack\APDU\Base Types</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetBDTEntry.cpp">
       <Filter>CASBACnetStack\APDU\Base Types</Filter>
     </ClCompile>
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetClientCOV.cpp">
@@ -465,10 +513,25 @@
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetDateRange.cpp">
       <Filter>CASBACnetStack\APDU\Base Types</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetDestination.cpp">
+      <Filter>CASBACnetStack\APDU\Base Types</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetDeviceObjectPropertyReference.cpp">
       <Filter>CASBACnetStack\APDU\Base Types</Filter>
     </ClCompile>
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetDeviceObjectReference.cpp">
+      <Filter>CASBACnetStack\APDU\Base Types</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetEnrollmentSummary.cpp">
+      <Filter>CASBACnetStack\APDU\Base Types</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetEventNotificationRequest.cpp">
+      <Filter>CASBACnetStack\APDU\Base Types</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetEventSummary.cpp">
+      <Filter>CASBACnetStack\APDU\Base Types</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetFDTEntry.cpp">
       <Filter>CASBACnetStack\APDU\Base Types</Filter>
     </ClCompile>
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetHostAddress.cpp">
@@ -507,6 +570,12 @@
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetLogRecord.cpp">
       <Filter>CASBACnetStack\APDU\Base Types</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetMessageClass.cpp">
+      <Filter>CASBACnetStack\APDU\Base Types</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetNotificationParameters.cpp">
+      <Filter>CASBACnetStack\APDU\Base Types</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetObjectSpecifier.cpp">
       <Filter>CASBACnetStack\APDU\Base Types</Filter>
     </ClCompile>
@@ -516,7 +585,16 @@
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetPriorityArray.cpp">
       <Filter>CASBACnetStack\APDU\Base Types</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetPriorityFilter.cpp">
+      <Filter>CASBACnetStack\APDU\Base Types</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetPriorityValue.cpp">
+      <Filter>CASBACnetStack\APDU\Base Types</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetPropertyStates.cpp">
+      <Filter>CASBACnetStack\APDU\Base Types</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetSequenceOfPropertyValue.cpp">
       <Filter>CASBACnetStack\APDU\Base Types</Filter>
     </ClCompile>
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetSingleLogData.cpp">
@@ -567,6 +645,12 @@
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetSequenceOf.cpp">
       <Filter>CASBACnetStack\APDU\Base Types</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetTimeStamp.cpp">
+      <Filter>CASBACnetStack\APDU\Base Types</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetTextMessage.cpp">
+      <Filter>CASBACnetStack\APDU\Base Types</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetWriteAccessSpecification.cpp">
       <Filter>CASBACnetStack\APDU\Base Types</Filter>
     </ClCompile>
@@ -585,10 +669,16 @@
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetUnconfirmedCOVNotificationRequest.cpp">
       <Filter>CASBACnetStack\APDU\Unconfirmed Service Productions</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetUnconfirmedEventNotificationRequest.cpp">
+      <Filter>CASBACnetStack\APDU\Unconfirmed Service Productions</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetUnconfirmedPrivateTransferRequest.cpp">
       <Filter>CASBACnetStack\APDU\Unconfirmed Service Productions</Filter>
     </ClCompile>
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetUnconfirmedServiceRequest.cpp">
+      <Filter>CASBACnetStack\APDU\Unconfirmed Service Productions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetUnconfirmedTextMessageRequest.cpp">
       <Filter>CASBACnetStack\APDU\Unconfirmed Service Productions</Filter>
     </ClCompile>
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetUTCTimeSynchronizationRequest.cpp">
@@ -600,7 +690,16 @@
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetWhoIsRequest.cpp">
       <Filter>CASBACnetStack\APDU\Unconfirmed Service Productions</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetAcknowledgeAlarmRequest.cpp">
+      <Filter>CASBACnetStack\APDU\Confirmed Service Productions</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetConfirmedCOVNotificationMultipleRequest.cpp">
+      <Filter>CASBACnetStack\APDU\Confirmed Service Productions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetConfirmedEventNotificationRequest.cpp">
+      <Filter>CASBACnetStack\APDU\Confirmed Service Productions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetConfirmedTextMessageRequest.cpp">
       <Filter>CASBACnetStack\APDU\Confirmed Service Productions</Filter>
     </ClCompile>
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetCreateObjectACK.cpp">
@@ -613,6 +712,21 @@
       <Filter>CASBACnetStack\APDU\Confirmed Service Productions</Filter>
     </ClCompile>
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetDeviceCommunicationControlRequest.cpp">
+      <Filter>CASBACnetStack\APDU\Confirmed Service Productions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetGetAlarmSummaryACK.cpp">
+      <Filter>CASBACnetStack\APDU\Confirmed Service Productions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetGetEnrollmentSummaryACK.cpp">
+      <Filter>CASBACnetStack\APDU\Confirmed Service Productions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetGetEnrollmentSummaryRequest.cpp">
+      <Filter>CASBACnetStack\APDU\Confirmed Service Productions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetGetEventInformationACK.cpp">
+      <Filter>CASBACnetStack\APDU\Confirmed Service Productions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetGetEventInformationRequest.cpp">
       <Filter>CASBACnetStack\APDU\Confirmed Service Productions</Filter>
     </ClCompile>
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetReadRangeACK.cpp">
@@ -662,6 +776,69 @@
     </ClCompile>
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetStackUnknownAPDU.cpp">
       <Filter>CASBACnetStack\APDU\Custom Types</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetNotificationParametersAccessEvent.cpp">
+      <Filter>CASBACnetStack\APDU\Notification Parameters</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetNotificationParametersBase.cpp">
+      <Filter>CASBACnetStack\APDU\Notification Parameters</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetNotificationParametersBufferReady.cpp">
+      <Filter>CASBACnetStack\APDU\Notification Parameters</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetNotificationParametersChangeOfBitstring.cpp">
+      <Filter>CASBACnetStack\APDU\Notification Parameters</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetNotificationParametersChangeOfCharacterstring.cpp">
+      <Filter>CASBACnetStack\APDU\Notification Parameters</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetNotificationParametersChangeOfDiscreteValue.cpp">
+      <Filter>CASBACnetStack\APDU\Notification Parameters</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetNotificationParametersChangeOfDiscreteValueNewValue.cpp">
+      <Filter>CASBACnetStack\APDU\Notification Parameters</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetNotificationParametersChangeOfLifeSafety.cpp">
+      <Filter>CASBACnetStack\APDU\Notification Parameters</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetNotificationParametersChangeOfReliability.cpp">
+      <Filter>CASBACnetStack\APDU\Notification Parameters</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetNotificationParametersChangeOfState.cpp">
+      <Filter>CASBACnetStack\APDU\Notification Parameters</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetNotificationParametersChangeOfStatusFlags.cpp">
+      <Filter>CASBACnetStack\APDU\Notification Parameters</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetNotificationParametersChangeOfTimer.cpp">
+      <Filter>CASBACnetStack\APDU\Notification Parameters</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetNotificationParametersChangeOfValue.cpp">
+      <Filter>CASBACnetStack\APDU\Notification Parameters</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetNotificationParametersChangeOfValueNewValue.cpp">
+      <Filter>CASBACnetStack\APDU\Notification Parameters</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetNotificationParametersCommandFailure.cpp">
+      <Filter>CASBACnetStack\APDU\Notification Parameters</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetNotificationParametersDoubleOutOfRange.cpp">
+      <Filter>CASBACnetStack\APDU\Notification Parameters</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetNotificationParametersFloatingLimit.cpp">
+      <Filter>CASBACnetStack\APDU\Notification Parameters</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetNotificationParametersOutOfRange.cpp">
+      <Filter>CASBACnetStack\APDU\Notification Parameters</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetNotificationParametersSignedOutOfRange.cpp">
+      <Filter>CASBACnetStack\APDU\Notification Parameters</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetNotificationParametersUnsignedOutOfRange.cpp">
+      <Filter>CASBACnetStack\APDU\Notification Parameters</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetNotificationParametersUnsignedRange.cpp">
+      <Filter>CASBACnetStack\APDU\Notification Parameters</Filter>
     </ClCompile>
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetAbortPDU.cpp">
       <Filter>CASBACnetStack\PDU</Filter>
@@ -723,6 +900,9 @@
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetNPDU.cpp">
       <Filter>CASBACnetStack\NPDU</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetNetworkLayerVendorProprietaryMessage.cpp">
+      <Filter>CASBACnetStack\NPDU</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetWhatIsNetworkNumber.cpp">
       <Filter>CASBACnetStack\NPDU</Filter>
     </ClCompile>
@@ -780,6 +960,9 @@
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetMSTPPacket.cpp">
       <Filter>CASBACnetStack\Packet</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetSCPacket.cpp">
+      <Filter>CASBACnetStack\Packet</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetIPPacket.cpp">
       <Filter>CASBACnetStack\Packet</Filter>
     </ClCompile>
@@ -793,6 +976,9 @@
       <Filter>CASBACnetStack\Database</Filter>
     </ClCompile>
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetStackActiveCOVMultipleSubscriptions.cpp">
+      <Filter>CASBACnetStack\Database</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetStackAlarmAndEventObject.cpp">
       <Filter>CASBACnetStack\Database</Filter>
     </ClCompile>
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetDatabase.cpp">
@@ -843,10 +1029,16 @@
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetStackNetworkPortIpv4.cpp">
       <Filter>CASBACnetStack\Database</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetStackNotificationClass.cpp">
+      <Filter>CASBACnetStack\Database</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetStackObjectSettings.cpp">
       <Filter>CASBACnetStack\Database</Filter>
     </ClCompile>
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetStackSentConfirmedRequests.cpp">
+      <Filter>CASBACnetStack\Database</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetStackSettings.cpp">
       <Filter>CASBACnetStack\Database</Filter>
     </ClCompile>
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetStackStoredDBPropertyValues.cpp">
@@ -864,6 +1056,9 @@
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetAbortProcessor.cpp">
       <Filter>CASBACnetStack\Processors</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetAcknowledgeAlarmProcessor.cpp">
+      <Filter>CASBACnetStack\Processors</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetCOVNotificationProcessor.cpp">
       <Filter>CASBACnetStack\Processors</Filter>
     </ClCompile>
@@ -871,6 +1066,12 @@
       <Filter>CASBACnetStack\Processors</Filter>
     </ClCompile>
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetDeleteObjectProcessor.cpp">
+      <Filter>CASBACnetStack\Processors</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetDeviceCommunicationControlProcessor.cpp">
+      <Filter>CASBACnetStack\Processors</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetGetEventInformationProcessor.cpp">
       <Filter>CASBACnetStack\Processors</Filter>
     </ClCompile>
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetReadRangeProcessor.cpp">
@@ -927,6 +1128,9 @@
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetSubscribeCOVPropertyProcessor.cpp">
       <Filter>CASBACnetStack\Processors</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetTextMessageProcessor.cpp">
+      <Filter>CASBACnetStack\Processors</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetTimeSynchronizationProcessor.cpp">
       <Filter>CASBACnetStack\Processors</Filter>
     </ClCompile>
@@ -951,47 +1155,119 @@
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetStackMessageGenerator.cpp">
       <Filter>CASBACnetStack\MessageGenerators</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetStackMemoryBuffer.cpp">
+      <Filter>CASBACnetStack\Helper</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetStackReadPropertyAsync.cpp">
       <Filter>CASBACnetStack\Helper</Filter>
     </ClCompile>
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetStackWritePropertyAsync.cpp">
       <Filter>CASBACnetStack\Helper</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetStackEventNotificationParameters.cpp">
+      <Filter>CASBACnetStack\AlarmsAndEvents</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetChangeOfStateEventAlgorithm.cpp">
+      <Filter>CASBACnetStack\AlarmsAndEvents\EventAlgorithms</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetEventAlgorithm.cpp">
+      <Filter>CASBACnetStack\AlarmsAndEvents\EventAlgorithms</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetOufOfRangeEventAlgorithm.cpp">
+      <Filter>CASBACnetStack\AlarmsAndEvents\EventAlgorithms</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetFaultAlgorithm.cpp">
+      <Filter>CASBACnetStack\AlarmsAndEvents\FaultAlgorithms</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetListedFaultAlgorithm.cpp">
+      <Filter>CASBACnetStack\AlarmsAndEvents\FaultAlgorithms</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetOutOfRangeFaultAlgorithm.cpp">
+      <Filter>CASBACnetStack\AlarmsAndEvents\FaultAlgorithms</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetBBMD.cpp">
+      <Filter>CASBACnetStack\DataLink</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetDataLink.cpp">
+      <Filter>CASBACnetStack\DataLink</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetDataLinkIPv4.cpp">
+      <Filter>CASBACnetStack\DataLink</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetDataLinkLayer.cpp">
+      <Filter>CASBACnetStack\DataLink</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetDataLinkMSTP.cpp">
+      <Filter>CASBACnetStack\DataLink</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetDataLinkSC.cpp">
+      <Filter>CASBACnetStack\DataLink</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetNetworkLayer.cpp">
+      <Filter>CASBACnetStack\NetworkLayer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetVirtualRouter.cpp">
+      <Filter>CASBACnetStack\NetworkLayer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetSCCommon.cpp">
+      <Filter>CASBACnetStack\BACnetSC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetSCHubConnector.cpp">
+      <Filter>CASBACnetStack\BACnetSC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetSCWebsocket.cpp">
+      <Filter>CASBACnetStack\BACnetSC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetSCAddressResolution.cpp">
+      <Filter>CASBACnetStack\BACnetSC\BACnetSCBVLL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetSCAddressResolutionACK.cpp">
+      <Filter>CASBACnetStack\BACnetSC\BACnetSCBVLL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetSCAdvertisement.cpp">
+      <Filter>CASBACnetStack\BACnetSC\BACnetSCBVLL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetSCAdvertisementSolicitation.cpp">
+      <Filter>CASBACnetStack\BACnetSC\BACnetSCBVLL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetSCBVLCResult.cpp">
+      <Filter>CASBACnetStack\BACnetSC\BACnetSCBVLL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetSCBVLL.cpp">
+      <Filter>CASBACnetStack\BACnetSC\BACnetSCBVLL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetSCConnectAccept.cpp">
+      <Filter>CASBACnetStack\BACnetSC\BACnetSCBVLL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetSCConnectRequest.cpp">
+      <Filter>CASBACnetStack\BACnetSC\BACnetSCBVLL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetSCDisconnectACK.cpp">
+      <Filter>CASBACnetStack\BACnetSC\BACnetSCBVLL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetSCDisconnectRequest.cpp">
+      <Filter>CASBACnetStack\BACnetSC\BACnetSCBVLL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetSCEncapsulatedNPDU.cpp">
+      <Filter>CASBACnetStack\BACnetSC\BACnetSCBVLL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetSCHeaderOption.cpp">
+      <Filter>CASBACnetStack\BACnetSC\BACnetSCBVLL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetSCHeartbeatACK.cpp">
+      <Filter>CASBACnetStack\BACnetSC\BACnetSCBVLL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetSCHeartbeatRequest.cpp">
+      <Filter>CASBACnetStack\BACnetSC\BACnetSCBVLL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetSCProprietaryMessage.cpp">
+      <Filter>CASBACnetStack\BACnetSC\BACnetSCBVLL</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\CASBACnetStackDLL.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetBDTEntry.cpp">
-      <Filter>CASBACnetStack</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetConfirmedTextMessageRequest.cpp">
-      <Filter>CASBACnetStack</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetFDTEntry.cpp">
-      <Filter>CASBACnetStack</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetMessageClass.cpp">
-      <Filter>CASBACnetStack</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetMessagePriority.cpp">
-      <Filter>CASBACnetStack</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetNetworkLayerVendorProprietaryMessage.cpp">
-      <Filter>CASBACnetStack</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetStackSettings.cpp">
-      <Filter>CASBACnetStack</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetTextMessage.cpp">
-      <Filter>CASBACnetStack</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetTextMessageProcessor.cpp">
-      <Filter>CASBACnetStack</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\BACnetUnconfirmedTextMessageRequest.cpp">
-      <Filter>CASBACnetStack</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\submodules\cas-bacnet-stack\source\MSTP.c">
-      <Filter>CASBACnetStack</Filter>
+    <ClCompile Include="..\..\..\cas-bacnet-stack-4.x\adapters\cpp\CASBACnetStackAdapter.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1014,9 +1290,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\submodules\cas-common\source\ChipkinConvert.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\submodules\cas-bacnet-stack\adapters\cpp\CASBACnetStackAdapter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetStackCommon.h">
@@ -1043,6 +1316,9 @@
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetStackDatatypes.h">
       <Filter>CASBACnetStack</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetStackDebug.h">
+      <Filter>CASBACnetStack</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetStackListItems.h">
       <Filter>CASBACnetStack</Filter>
     </ClInclude>
@@ -1059,6 +1335,9 @@
       <Filter>CASBACnetStack</Filter>
     </ClInclude>
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\endianness.h">
+      <Filter>CASBACnetStack</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\MSTP.h">
       <Filter>CASBACnetStack</Filter>
     </ClInclude>
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\version.h">
@@ -1091,10 +1370,19 @@
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetAccumulatorStatus.h">
       <Filter>CASBACnetStack\Enumerated</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetAcknowledgementFilter.h">
+      <Filter>CASBACnetStack\Enumerated</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetAction.h">
       <Filter>CASBACnetStack\Enumerated</Filter>
     </ClInclude>
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetEnableDisable.h">
+      <Filter>CASBACnetStack\Enumerated</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetEventStateFilter.h">
+      <Filter>CASBACnetStack\Enumerated</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetMessagePriority.h">
       <Filter>CASBACnetStack\Enumerated</Filter>
     </ClInclude>
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetReinitializedStateOfDevice.h">
@@ -1301,6 +1589,18 @@
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetWriteStatus.h">
       <Filter>CASBACnetStack\Enumerated</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetObjectTypesSupported.h">
+      <Filter>CASBACnetStack\Bitstrings</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetDaysOfWeek.h">
+      <Filter>CASBACnetStack\Bitstrings</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetEventTransitionBits.h">
+      <Filter>CASBACnetStack\Bitstrings</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetLimitEnable.h">
+      <Filter>CASBACnetStack\Bitstrings</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetLogStatus.h">
       <Filter>CASBACnetStack\Bitstrings</Filter>
     </ClInclude>
@@ -1394,7 +1694,16 @@
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetAddressBinding.h">
       <Filter>CASBACnetStack\APDU\Base Types</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetAlarmSummary.h">
+      <Filter>CASBACnetStack\APDU\Base Types</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetAssignedLandingCalls.h">
+      <Filter>CASBACnetStack\APDU\Base Types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetAuthenticationFactor.h">
+      <Filter>CASBACnetStack\APDU\Base Types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetBDTEntry.h">
       <Filter>CASBACnetStack\APDU\Base Types</Filter>
     </ClInclude>
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetClientCOV.h">
@@ -1421,10 +1730,25 @@
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetDateRange.h">
       <Filter>CASBACnetStack\APDU\Base Types</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetDestination.h">
+      <Filter>CASBACnetStack\APDU\Base Types</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetDeviceObjectPropertyReference.h">
       <Filter>CASBACnetStack\APDU\Base Types</Filter>
     </ClInclude>
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetDeviceObjectReference.h">
+      <Filter>CASBACnetStack\APDU\Base Types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetEnrollmentSummary.h">
+      <Filter>CASBACnetStack\APDU\Base Types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetEventNotificationRequest.h">
+      <Filter>CASBACnetStack\APDU\Base Types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetEventSummary.h">
+      <Filter>CASBACnetStack\APDU\Base Types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetFDTEntry.h">
       <Filter>CASBACnetStack\APDU\Base Types</Filter>
     </ClInclude>
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetHostAddress.h">
@@ -1455,6 +1779,21 @@
       <Filter>CASBACnetStack\APDU\Base Types</Filter>
     </ClInclude>
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetLogMultipleRecord.h">
+      <Filter>CASBACnetStack\APDU\Base Types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetMessageClass.h">
+      <Filter>CASBACnetStack\APDU\Base Types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetNotificationParameters.h">
+      <Filter>CASBACnetStack\APDU\Base Types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetPriorityFilter.h">
+      <Filter>CASBACnetStack\APDU\Base Types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetPropertyStates.h">
+      <Filter>CASBACnetStack\APDU\Base Types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetSequenceOfPropertyValue.h">
       <Filter>CASBACnetStack\APDU\Base Types</Filter>
     </ClInclude>
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetSingleLogData.h">
@@ -1523,6 +1862,12 @@
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetSequenceOf.h">
       <Filter>CASBACnetStack\APDU\Base Types</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetTimeStamp.h">
+      <Filter>CASBACnetStack\APDU\Base Types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetTextMessage.h">
+      <Filter>CASBACnetStack\APDU\Base Types</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetWriteAccessSpecification.h">
       <Filter>CASBACnetStack\APDU\Base Types</Filter>
     </ClInclude>
@@ -1541,10 +1886,16 @@
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetUnconfirmedCOVNotificationRequest.h">
       <Filter>CASBACnetStack\APDU\Unconfirmed Service Productions</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetUnconfirmedEventNotificationRequest.h">
+      <Filter>CASBACnetStack\APDU\Unconfirmed Service Productions</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetUnconfirmedPrivateTransferRequest.h">
       <Filter>CASBACnetStack\APDU\Unconfirmed Service Productions</Filter>
     </ClInclude>
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetUnconfirmedServiceRequest.h">
+      <Filter>CASBACnetStack\APDU\Unconfirmed Service Productions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetUnconfirmedTextMessageRequest.h">
       <Filter>CASBACnetStack\APDU\Unconfirmed Service Productions</Filter>
     </ClInclude>
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetUTCTimeSynchronizationRequest.h">
@@ -1556,7 +1907,16 @@
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetWhoIsRequest.h">
       <Filter>CASBACnetStack\APDU\Unconfirmed Service Productions</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetAcknowledgeAlarmRequest.h">
+      <Filter>CASBACnetStack\APDU\Confirmed Service Productions</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetConfirmedCOVNotificationMultipleRequest.h">
+      <Filter>CASBACnetStack\APDU\Confirmed Service Productions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetConfirmedEventNotificationRequest.h">
+      <Filter>CASBACnetStack\APDU\Confirmed Service Productions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetConfirmedTextMessageRequest.h">
       <Filter>CASBACnetStack\APDU\Confirmed Service Productions</Filter>
     </ClInclude>
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetCreateObjectACK.h">
@@ -1569,6 +1929,21 @@
       <Filter>CASBACnetStack\APDU\Confirmed Service Productions</Filter>
     </ClInclude>
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetDeviceCommunicationControlRequest.h">
+      <Filter>CASBACnetStack\APDU\Confirmed Service Productions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetGetAlarmSummaryACK.h">
+      <Filter>CASBACnetStack\APDU\Confirmed Service Productions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetGetEnrollmentSummaryACK.h">
+      <Filter>CASBACnetStack\APDU\Confirmed Service Productions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetGetEnrollmentSummaryRequest.h">
+      <Filter>CASBACnetStack\APDU\Confirmed Service Productions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetGetEventInformationACK.h">
+      <Filter>CASBACnetStack\APDU\Confirmed Service Productions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetGetEventInformationRequest.h">
       <Filter>CASBACnetStack\APDU\Confirmed Service Productions</Filter>
     </ClInclude>
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetReadRangeACK.h">
@@ -1618,6 +1993,69 @@
     </ClInclude>
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetStackUnknownAPDU.h">
       <Filter>CASBACnetStack\APDU\Custom Types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetNotificationParametersAccessEvent.h">
+      <Filter>CASBACnetStack\APDU\Notification Parameters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetNotificationParametersBase.h">
+      <Filter>CASBACnetStack\APDU\Notification Parameters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetNotificationParametersBufferReady.h">
+      <Filter>CASBACnetStack\APDU\Notification Parameters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetNotificationParametersChangeOfBitstring.h">
+      <Filter>CASBACnetStack\APDU\Notification Parameters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetNotificationParametersChangeOfCharacterstring.h">
+      <Filter>CASBACnetStack\APDU\Notification Parameters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetNotificationParametersChangeOfDiscreteValue.h">
+      <Filter>CASBACnetStack\APDU\Notification Parameters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetNotificationParametersChangeOfDiscreteValueNewValue.h">
+      <Filter>CASBACnetStack\APDU\Notification Parameters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetNotificationParametersChangeOfLifeSafety.h">
+      <Filter>CASBACnetStack\APDU\Notification Parameters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetNotificationParametersChangeOfReliability.h">
+      <Filter>CASBACnetStack\APDU\Notification Parameters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetNotificationParametersChangeOfState.h">
+      <Filter>CASBACnetStack\APDU\Notification Parameters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetNotificationParametersChangeOfStatusFlags.h">
+      <Filter>CASBACnetStack\APDU\Notification Parameters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetNotificationParametersChangeOfTimer.h">
+      <Filter>CASBACnetStack\APDU\Notification Parameters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetNotificationParametersChangeOfValue.h">
+      <Filter>CASBACnetStack\APDU\Notification Parameters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetNotificationParametersChangeOfValueNewValue.h">
+      <Filter>CASBACnetStack\APDU\Notification Parameters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetNotificationParametersCommandFailure.h">
+      <Filter>CASBACnetStack\APDU\Notification Parameters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetNotificationParametersDoubleOutOfRange.h">
+      <Filter>CASBACnetStack\APDU\Notification Parameters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetNotificationParametersFloatingLimit.h">
+      <Filter>CASBACnetStack\APDU\Notification Parameters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetNotificationParametersOutOfRange.h">
+      <Filter>CASBACnetStack\APDU\Notification Parameters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetNotificationParametersSignedOutOfRange.h">
+      <Filter>CASBACnetStack\APDU\Notification Parameters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetNotificationParametersUnsignedOutOfRange.h">
+      <Filter>CASBACnetStack\APDU\Notification Parameters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetNotificationParametersUnsignedRange.h">
+      <Filter>CASBACnetStack\APDU\Notification Parameters</Filter>
     </ClInclude>
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetAbortPDU.h">
       <Filter>CASBACnetStack\PDU</Filter>
@@ -1679,6 +2117,9 @@
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetNPDU.h">
       <Filter>CASBACnetStack\NPDU</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetNetworkLayerVendorProprietaryMessage.h">
+      <Filter>CASBACnetStack\NPDU</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetWhatIsNetworkNumber.h">
       <Filter>CASBACnetStack\NPDU</Filter>
     </ClInclude>
@@ -1736,6 +2177,9 @@
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetReadForeignDeviceTableAck.h">
       <Filter>CASBACnetStack\BVLL</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetSCPacket.h">
+      <Filter>CASBACnetStack\Packet</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetMSTPPacket.h">
       <Filter>CASBACnetStack\Packet</Filter>
     </ClInclude>
@@ -1755,6 +2199,9 @@
       <Filter>CASBACnetStack\Database</Filter>
     </ClInclude>
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetStackActiveCOVMultipleSubscriptions.h">
+      <Filter>CASBACnetStack\Database</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetStackAlarmAndEventObject.h">
       <Filter>CASBACnetStack\Database</Filter>
     </ClInclude>
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetDatabase.h">
@@ -1802,6 +2249,9 @@
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetStackNetworkPortIpv4.h">
       <Filter>CASBACnetStack\Database</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetStackNotificationClass.h">
+      <Filter>CASBACnetStack\Database</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetStackObjectSettings.h">
       <Filter>CASBACnetStack\Database</Filter>
     </ClInclude>
@@ -1809,6 +2259,9 @@
       <Filter>CASBACnetStack\Database</Filter>
     </ClInclude>
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetStackSentConfirmedRequests.h">
+      <Filter>CASBACnetStack\Database</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetStackSettings.h">
       <Filter>CASBACnetStack\Database</Filter>
     </ClInclude>
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetStackStoredDBPropertyValues.h">
@@ -1826,6 +2279,9 @@
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetAbortProcessor.h">
       <Filter>CASBACnetStack\Processors</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetAcknowledgeAlarmProcessor.h">
+      <Filter>CASBACnetStack\Processors</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetCOVNotificationProcessor.h">
       <Filter>CASBACnetStack\Processors</Filter>
     </ClInclude>
@@ -1833,6 +2289,12 @@
       <Filter>CASBACnetStack\Processors</Filter>
     </ClInclude>
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetDeleteObjectProcessor.h">
+      <Filter>CASBACnetStack\Processors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetDeviceCommunicationControlProcessor.h">
+      <Filter>CASBACnetStack\Processors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetGetEventInformationProcessor.h">
       <Filter>CASBACnetStack\Processors</Filter>
     </ClInclude>
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetReinitializeDeviceProcessor.h">
@@ -1889,6 +2351,9 @@
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetSubscribeCOVPropertyProcessor.h">
       <Filter>CASBACnetStack\Processors</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetTextMessageProcessor.h">
+      <Filter>CASBACnetStack\Processors</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetTimeSynchronizationProcessor.h">
       <Filter>CASBACnetStack\Processors</Filter>
     </ClInclude>
@@ -1913,62 +2378,132 @@
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetStackMessageGenerator.h">
       <Filter>CASBACnetStack\MessageGenerators</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetStackMemoryBuffer.h">
+      <Filter>CASBACnetStack\Helper</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetStackReadPropertyAsync.h">
       <Filter>CASBACnetStack\Helper</Filter>
     </ClInclude>
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetStackWritePropertyAsync.h">
       <Filter>CASBACnetStack\Helper</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetAlarmAndEventAlgorithmResult.h">
+      <Filter>CASBACnetStack\AlarmsAndEvents</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetStackEventNotificationParameters.h">
+      <Filter>CASBACnetStack\AlarmsAndEvents</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetChangeOfStateEventAlgorithm.h">
+      <Filter>CASBACnetStack\AlarmsAndEvents\EventAlgorithms</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetEventAlgorithm.h">
+      <Filter>CASBACnetStack\AlarmsAndEvents\EventAlgorithms</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetOutOfRangeEventAlgorithm.h">
+      <Filter>CASBACnetStack\AlarmsAndEvents\EventAlgorithms</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetFaultAlgorithm.h">
+      <Filter>CASBACnetStack\AlarmsAndEvents\FaultAlgorithms</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetListedFaultAlgorithm.h">
+      <Filter>CASBACnetStack\AlarmsAndEvents\FaultAlgorithms</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetOutOfRangeFaultAlgorithm.h">
+      <Filter>CASBACnetStack\AlarmsAndEvents\FaultAlgorithms</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetBBMD.h">
+      <Filter>CASBACnetStack\DataLink</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetDataLink.h">
+      <Filter>CASBACnetStack\DataLink</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetDataLinkIPv4.h">
+      <Filter>CASBACnetStack\DataLink</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetDataLinkLayer.h">
+      <Filter>CASBACnetStack\DataLink</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetDataLinkMSTP.h">
+      <Filter>CASBACnetStack\DataLink</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetDataLinkSC.h">
+      <Filter>CASBACnetStack\DataLink</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetNetworkLayer.h">
+      <Filter>CASBACnetStack\NetworkLayer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetVirtualRouter.h">
+      <Filter>CASBACnetStack\NetworkLayer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetSCCommon.h">
+      <Filter>CASBACnetStack\BACnetSC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetSCConstants.h">
+      <Filter>CASBACnetStack\BACnetSC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetSCHubConnector.h">
+      <Filter>CASBACnetStack\BACnetSC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetSCWebsocket.h">
+      <Filter>CASBACnetStack\BACnetSC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetSCAddressResolution.h">
+      <Filter>CASBACnetStack\BACnetSC\BACnetSCBVLL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetSCAddressResolutionACK.h">
+      <Filter>CASBACnetStack\BACnetSC\BACnetSCBVLL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetSCAdvertisement.h">
+      <Filter>CASBACnetStack\BACnetSC\BACnetSCBVLL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetSCAdvertisementSolicitation.h">
+      <Filter>CASBACnetStack\BACnetSC\BACnetSCBVLL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetSCBVLCResult.h">
+      <Filter>CASBACnetStack\BACnetSC\BACnetSCBVLL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetSCBVLL.h">
+      <Filter>CASBACnetStack\BACnetSC\BACnetSCBVLL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetSCConnectAccept.h">
+      <Filter>CASBACnetStack\BACnetSC\BACnetSCBVLL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetSCConnectRequest.h">
+      <Filter>CASBACnetStack\BACnetSC\BACnetSCBVLL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetSCDisconnectACK.h">
+      <Filter>CASBACnetStack\BACnetSC\BACnetSCBVLL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetSCDisconnectRequest.h">
+      <Filter>CASBACnetStack\BACnetSC\BACnetSCBVLL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetSCEncapsulatedNPDU.h">
+      <Filter>CASBACnetStack\BACnetSC\BACnetSCBVLL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetSCHeaderOption.h">
+      <Filter>CASBACnetStack\BACnetSC\BACnetSCBVLL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetSCHeartbeatACK.h">
+      <Filter>CASBACnetStack\BACnetSC\BACnetSCBVLL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetSCHeartbeatRequest.h">
+      <Filter>CASBACnetStack\BACnetSC\BACnetSCBVLL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetSCProprietaryMessage.h">
+      <Filter>CASBACnetStack\BACnetSC\BACnetSCBVLL</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\CASBACnetStackDLL.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetBDTEntry.h">
-      <Filter>CASBACnetStack</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetConfirmedTextMessageRequest.h">
-      <Filter>CASBACnetStack</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetFDTEntry.h">
-      <Filter>CASBACnetStack</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetMessageClass.h">
-      <Filter>CASBACnetStack</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetMessagePriority.h">
-      <Filter>CASBACnetStack</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetNetworkLayerVendorProprietaryMessage.h">
-      <Filter>CASBACnetStack</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetStackSettings.h">
-      <Filter>CASBACnetStack</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetTextMessage.h">
-      <Filter>CASBACnetStack</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetTextMessageProcessor.h">
-      <Filter>CASBACnetStack</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\BACnetUnconfirmedTextMessageRequest.h">
-      <Filter>CASBACnetStack</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\CIBuildSettings.h">
-      <Filter>CASBACnetStack</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\licensee.h">
-      <Filter>CASBACnetStack</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\MSTP.h">
-      <Filter>CASBACnetStack</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\submodules\cas-bacnet-stack\source\stdafx.h">
-      <Filter>CASBACnetStack</Filter>
+    <ClInclude Include="..\..\..\cas-bacnet-stack-4.x\adapters\cpp\CASBACnetStackAdapter.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\CHANGELOG.md" />
-    <None Include="..\..\submodules\cas-bacnet-stack\source\readme.md">
-      <Filter>CASBACnetStack</Filter>
+    <None Include="..\..\docs\writable-network-number.md">
+      <Filter>docs</Filter>
     </None>
+    <None Include="..\..\README.md" />
   </ItemGroup>
 </Project>

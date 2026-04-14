@@ -23,7 +23,7 @@
 #define NUMBER_OF_VIRTUAL_NETWORKS		3
 #define STARTING_VIRTUAL_NETWORK		1000
 #define VIRTUAL_NETWORK_OFFSET			1000
-#define NUMBER_OF_DEVICES_PER_NETWORK	10
+#define NUMBER_OF_DEVICES_PER_NETWORK	3
 #define STARTING_DEVICE_INSTANCE		100000
 
 // Base class for all object types. 
@@ -52,7 +52,16 @@ public:
 	uint32_t systemStatus;
 };
 
-class ExampleDatabaseNetworkPort : public ExampleDatabaseBaseObject
+class ExampleDatabaseNetworkPortBase : public ExampleDatabaseBaseObject 
+{
+	public:
+	bool changesPending;
+	uint16_t networkNumber;
+	uint8_t networkNumberQuality;
+	uint16_t prevNetworkNumber;
+};
+
+class ExampleDatabaseNetworkPortIpv4 : public ExampleDatabaseNetworkPortBase
 {
 public:
 	// Network Port Properties
@@ -67,16 +76,18 @@ public:
 	uint8_t IPDNSServerLength;
 
 	uint8_t BroadcastIPAddress[4];
-};
 
+	
+};
 
 class ExampleDatabase {
 public:
 
 	ExampleDatabaseDevice mainDevice;
-	ExampleDatabaseNetworkPort networkPort;
+	ExampleDatabaseNetworkPortIpv4 networkPort;
 
 	std::map<uint16_t, std::vector<ExampleDatabaseDevice> > virtualDevices;
+	std::map<uint32_t, ExampleDatabaseNetworkPortBase> virtualNetworkPorts;
 	std::map<uint32_t, ExampleDatabaseAnalogInput> analogInputs;
 
 	// Constructor/Deconstructor
@@ -90,7 +101,10 @@ public:
 	void Loop();
 
 	// Helper functions
+	void LoadVirtualDevices();
 	void LoadNetworkPortProperties();
+	void ReloadVirtualDevices();
+	
 
 private:
 	const std::string GetColorName();
