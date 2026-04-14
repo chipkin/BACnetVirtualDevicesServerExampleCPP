@@ -57,14 +57,14 @@ this->networkPort.prevNetworkNumber    = 0;
 ### 1.3 Initialise virtual network port fields in `LoadVirtualDevices()`
 
 ```cpp
-// CASBACnetStackExampleDatabase.cpp lines 62-68
+// CASBACnetStackExampleDatabase.cpp lines 62-69
 ExampleDatabaseNetworkPortBase virtualNetworkPort;
 virtualNetworkPort.changesPending       = false;
 virtualNetworkPort.networkNumberQuality = 3;  // configured
 virtualNetworkPort.instance             = STARTING_VIRTUAL_NETWORK + (networkIndex * VIRTUAL_NETWORK_OFFSET);
 uint16_t networkNumber                  = STARTING_VIRTUAL_NETWORK + (networkIndex * VIRTUAL_NETWORK_OFFSET);
 virtualNetworkPort.networkNumber        = networkNumber;
-virtualNetworkPort.prevNetworkNumber    = 0;  // no pending change
+virtualNetworkPort.prevNetworkNumber    = networkNumber;  // matches current value – no pending change
 this->virtualNetworkPorts[virtualNetworkPort.instance] = virtualNetworkPort;
 ```
 
@@ -119,7 +119,7 @@ When the stack receives a `WriteProperty` for `Network_Number` it calls this cal
 - **Virtual network port** – identified by a matching key in `g_database.virtualNetworkPorts`.
 
 ```cpp
-// BACnetVirtualDevicesServerExampleCPP.cpp lines 732-757
+// BACnetVirtualDevicesServerExampleCPP.cpp lines 744-773
 bool CallbackSetPropertyUInt(
     const uint32_t deviceInstance,
     const uint16_t objectType,
@@ -134,29 +134,31 @@ bool CallbackSetPropertyUInt(
     if (propertyIdentifier == CASBACnetStackExampleConstants::PROPERTY_IDENTIFIER_NETWORK_NUMBER) {
         if (deviceInstance == g_database.mainDevice.instance) {
 
+            // Reject values outside the valid BACnet network number range
+            if (value > 65535) {
+                *errorCode = CASBACnetStackExampleConstants::ERROR_VALUE_OUT_OF_RANGE;
+                return false;
+            }
+
             // --- BACnet IP network port ---
-            if (objectType == CASBACnetStackExampleConstants::OBJECT_TYPE_NETWORK_PORT &&
-                objectInstance == g_database.networkPort.instance) {
+            if (objectInstance == g_database.networkPort.instance) {
+                if (objectType == CASBACnetStackExampleConstants::OBJECT_TYPE_NETWORK_PORT) {
+                    std::cout << "Received request to set Network Number property of the Network Port Object."
+                              << " value=[" << value << "], priority=[" << (int)priority << "]" << std::endl;
 
-                std::cout << "Received request to set Network Number of the BACnet IP Network Port."
-                          << " value=[" << value << "], priority=[" << (int)priority << "]" << std::endl;
-
-                g_database.networkPort.prevNetworkNumber    = g_database.networkPort.networkNumber;
-                g_database.networkPort.networkNumber        = (uint16_t)value;
-                g_database.networkPort.networkNumberQuality = 3;  // configured
-                g_database.networkPort.changesPending       = true;
-                return true;
+                    g_database.networkPort.prevNetworkNumber    = g_database.networkPort.networkNumber;
+                    g_database.networkPort.networkNumber        = value;
+                    g_database.networkPort.networkNumberQuality = 3;  // configured
+                    g_database.networkPort.changesPending       = true;
+                    return true;
+                }
             }
 
             // --- Virtual network port ---
-            if (g_database.virtualNetworkPorts.count(objectInstance) > 0) {
-                std::cout << "Received request to set Network Number of virtual network port."
-                          << " objectInstance=[" << objectInstance << "]"
-                          << " value=[" << value << "]" << std::endl;
-
+            else if (g_database.virtualNetworkPorts.count(objectInstance) > 0) {
                 g_database.virtualNetworkPorts[objectInstance].prevNetworkNumber    =
                     g_database.virtualNetworkPorts[objectInstance].networkNumber;
-                g_database.virtualNetworkPorts[objectInstance].networkNumber        = (uint16_t)value;
+                g_database.virtualNetworkPorts[objectInstance].networkNumber        = value;
                 g_database.virtualNetworkPorts[objectInstance].networkNumberQuality = 3;
                 g_database.virtualNetworkPorts[objectInstance].changesPending       = true;
                 return true;
@@ -168,6 +170,7 @@ bool CallbackSetPropertyUInt(
 ```
 
 > **Key points**
+> - Validate `value <= 65535` first and return `ERROR_VALUE_OUT_OF_RANGE` if not — `Network_Number` is a `Unsigned16` in the BACnet standard.
 > - Save the current value to `prevNetworkNumber` *before* overwriting `networkNumber`.
 > - Set `networkNumberQuality` to `3` (configured) to reflect that the value was explicitly set.
 > - Set `changesPending = true`. The stack reads this flag via `CallbackGetPropertyBool` and exposes it on the `Changes_Pending` property.
@@ -180,7 +183,7 @@ bool CallbackSetPropertyUInt(
 The stack will call this callback when a client reads the `Changes_Pending` property. Handle both the BACnet IP port and virtual ports:
 
 ```cpp
-// BACnetVirtualDevicesServerExampleCPP.cpp lines 572-588
+// BACnetVirtualDevicesServerExampleCPP.cpp lines 584-600
 bool CallbackGetPropertyBool(
     uint32_t  deviceInstance,
     uint16_t  objectType,
@@ -222,21 +225,18 @@ bool CallbackGetPropertyBool(
 3. Call `fpUpdateVirtualNetworkNumber` for each virtual port that changed, then send a single `IAmRouterToNetwork` broadcast.
 
 ```cpp
-// BACnetVirtualDevicesServerExampleCPP.cpp lines 381-419
+// BACnetVirtualDevicesServerExampleCPP.cpp lines 391-431
 void ActivateChanges() {
     std::cout << "FYI: Activating Changes for NetworkPort Objects..." << std::endl;
 
-    // Build the broadcast connection string once
-    uint8_t connectionString[6];
-    memcpy(connectionString, g_database.networkPort.BroadcastIPAddress, 4);
-    connectionString[4] = g_database.networkPort.BACnetIPUDPPort / 256;
-    connectionString[5] = g_database.networkPort.BACnetIPUDPPort % 256;
-
     // --- BACnet IP network port ---
     if (g_database.networkPort.prevNetworkNumber != g_database.networkPort.networkNumber) {
-        std::cout << "BACnet IP Network Port network number changed to ["
+        std::cout << "Network Port network number changed. Sending NetworkNumberIs broadcast with new network number=["
                   << g_database.networkPort.networkNumber << "]" << std::endl;
-
+        uint8_t connectionString[6];
+        memcpy(connectionString, g_database.networkPort.BroadcastIPAddress, 4);
+        connectionString[4] = g_database.networkPort.BACnetIPUDPPort / 256;
+        connectionString[5] = g_database.networkPort.BACnetIPUDPPort % 256;
         if (!fpSendNetworkNumberIs(
                 g_database.networkPort.networkNumber,
                 g_database.networkPort.networkNumberQuality,
@@ -246,6 +246,7 @@ void ActivateChanges() {
             std::cerr << "Unable to send NetworkNumberIs broadcast for network number=["
                       << g_database.networkPort.networkNumber << "]" << std::endl;
         }
+        g_database.networkPort.prevNetworkNumber = g_database.networkPort.networkNumber;
     }
 
     // --- Virtual network ports ---
@@ -269,11 +270,16 @@ void ActivateChanges() {
                 std::cerr << "Unable to update the virtual network number for virtual network port ["
                           << networkPortIt->first << "]" << std::endl;
             }
+            networkPortIt->second.prevNetworkNumber = networkPortIt->second.networkNumber;
         }
     }
 
     if (virtualNetworkPortChanged) {
         std::cout << "Sending IAmRouterToNetwork broadcast with new network numbers..." << std::endl;
+        uint8_t connectionString[6];
+        memcpy(connectionString, g_database.networkPort.BroadcastIPAddress, 4);
+        connectionString[4] = g_database.networkPort.BACnetIPUDPPort / 256;
+        connectionString[5] = g_database.networkPort.BACnetIPUDPPort % 256;
         if (!fpSendIAmRouterToNetwork(connectionString, 6,
                                       CASBACnetStackExampleConstants::NETWORK_TYPE_IP,
                                       true, 65535, NULL, 0)) {
@@ -303,7 +309,7 @@ The `ReinitializeDevice` service supports three states that are relevant to netw
 In `CallbackReinitializeDevice`, clear `changesPending` for all network ports and set the appropriate flag so that `ActivateChanges` (or `WarmStart`) is processed outside the callback after the stack sends its `SimpleAck`:
 
 ```cpp
-// BACnetVirtualDevicesServerExampleCPP.cpp lines 759-820
+// BACnetVirtualDevicesServerExampleCPP.cpp lines 775-836
 bool CallbackReinitializeDevice(
     const uint32_t  deviceInstance,
     const uint32_t  reinitializedState,
@@ -312,7 +318,11 @@ bool CallbackReinitializeDevice(
     uint32_t*       errorCode)
 {
     // Validate password
-    if (password == NULL || passwordLength == 0 || strcmp(password, "12345") != 0) {
+    if (password == NULL || passwordLength == 0) {
+        *errorCode = CASBACnetStackExampleConstants::ERROR_PASSWORD_FAILURE;
+        return false;
+    }
+    if (strncmp(password, "12345", passwordLength) != 0) {
         *errorCode = CASBACnetStackExampleConstants::ERROR_PASSWORD_FAILURE;
         return false;
     }
@@ -384,32 +394,31 @@ This section walks through exactly what each function does in this example and h
 
 ### `ActivateChanges()` – Apply pending changes at runtime (no restart)
 
-`ActivateChanges()` (lines 381–419 in `BACnetVirtualDevicesServerExampleCPP.cpp`) is called from the main loop immediately after the stack has sent the `SimpleAck` for a `ReinitializeDevice (ActivateChanges)` request. It applies any pending `Network_Number` changes without restarting the device.
+`ActivateChanges()` (lines 391–431 in `BACnetVirtualDevicesServerExampleCPP.cpp`) is called from the main loop immediately after the stack has sent the `SimpleAck` for a `ReinitializeDevice (ActivateChanges)` request. It applies any pending `Network_Number` changes without restarting the device.
 
 **What this example does, step by step:**
 
-1. **BACnet IP network port** – Compares `prevNetworkNumber` with `networkNumber`. If they differ, builds the IP broadcast connection string and calls `fpSendNetworkNumberIs()` so every device on the BACnet/IP network learns the port's new network number.
-2. **Virtual network ports** – Iterates every entry in `g_database.virtualNetworkPorts`. For each port where `prevNetworkNumber` is non-zero and differs from `networkNumber`, calls `fpUpdateVirtualNetworkNumber(prevNetworkNumber, networkNumber)` to update the CAS BACnet Stack's internal routing table, and sets a `virtualNetworkPortChanged` flag.
-3. **`IAmRouterToNetwork` broadcast** – If at least one virtual port changed, sends a single `fpSendIAmRouterToNetwork()` broadcast so neighbouring routers and devices learn the updated network-to-router mapping.
+1. **BACnet IP network port** – Compares `prevNetworkNumber` with `networkNumber`. If they differ, builds the IP broadcast connection string inline, calls `fpSendNetworkNumberIs()` so every device on the BACnet/IP network learns the port's new network number, then resets `prevNetworkNumber = networkNumber` so a second call does not re-broadcast.
+2. **Virtual network ports** – Iterates every entry in `g_database.virtualNetworkPorts`. For each port where `prevNetworkNumber` is non-zero and differs from `networkNumber`, calls `fpUpdateVirtualNetworkNumber(prevNetworkNumber, networkNumber)` to update the CAS BACnet Stack's internal routing table, sets a `virtualNetworkPortChanged` flag, then resets `prevNetworkNumber = networkNumber`.
+3. **`IAmRouterToNetwork` broadcast** – If at least one virtual port changed, builds the broadcast connection string inline and sends a single `fpSendIAmRouterToNetwork()` so neighbouring routers and devices learn the updated network-to-router mapping.
 
 **What a production implementation must also do:**
 
 - **Persist the new values** – Write the updated network numbers to non-volatile storage (EEPROM, flash, config file, etc.) so they survive a power cycle. In this example, values are only held in RAM and are lost on restart.
-- **Reset `prevNetworkNumber`** – After successfully applying a change, set `prevNetworkNumber = networkNumber` (or `= 0`) for each port so that a subsequent `ActivateChanges` without a new write does not re-broadcast stale change data.
 
 ---
 
 ### `WarmStart()` – Apply pending changes then soft-reboot
 
-`WarmStart()` (lines 369–379 in `BACnetVirtualDevicesServerExampleCPP.cpp`) is called from the main loop after a 3-second deferred timer expires, giving the stack time to transmit the `SimpleAck` for the `ReinitializeDevice (WarmStart)` request before the restart begins.
+`WarmStart()` (lines 373–389 in `BACnetVirtualDevicesServerExampleCPP.cpp`) is called from the main loop after a 3-second deferred timer expires, giving the stack time to transmit the `SimpleAck` for the `ReinitializeDevice (WarmStart)` request before the restart begins.
 
 **What this example does, step by step:**
 
 1. **`fpReset()`** – Tears down and fully reinitialises the CAS BACnet Stack, clearing all registered objects, callbacks, and internal state.
 2. **`g_database.ReloadVirtualDevices()`** – Clears the `virtualDevices` map and rebuilds it by iterating `virtualNetworkPorts`, using each port's current `networkNumber` value. This means any `networkNumber` that was written before the warm start is automatically picked up when the objects are re-registered in the next step.
 3. **`RegisterCallbacks()`** – Re-registers all message, system-time, get-property, set-property, and remote-device-management callbacks with the freshly reset stack instance.
-4. **`SetupDevice()`** – Re-adds the main device, network port object, virtual networks, virtual devices, and analog input objects to the stack.
-5. **`SendIAm()`** – Broadcasts `IAm`, `IAmRouterToNetwork`, and `NetworkNumberIs` to re-announce the device and its updated routing information to the rest of the network.
+4. **`SetupDevice()`** – Re-adds the main device, network port object, virtual networks, virtual devices, and analog input objects to the stack. Returns `false` on failure, in which case `WarmStart()` logs an error and aborts.
+5. **`SendIAm()`** – Broadcasts `IAm`, `IAmRouterToNetwork`, and `NetworkNumberIs` to re-announce the device and its updated routing information to the rest of the network. Returns `false` on failure, in which case `WarmStart()` logs an error and aborts.
 
 **What a production implementation must also do:**
 
@@ -423,7 +432,7 @@ This section walks through exactly what each function does in this example and h
 When the device starts up with a configured network number (quality = `3`), broadcast a `NetworkNumberIs` so the rest of the network learns the mapping immediately:
 
 ```cpp
-// BACnetVirtualDevicesServerExampleCPP.cpp lines 358-365
+// BACnetVirtualDevicesServerExampleCPP.cpp lines 362-368
 // In SendIAm() – after sending IAmRouterToNetwork
 if (g_database.networkPort.networkNumberQuality != 0) {
     if (!fpSendNetworkNumberIs(
